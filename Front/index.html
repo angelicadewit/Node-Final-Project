@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title> (◕‸ ◕✿) </title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" href="dist/css/main.css">
+		<!-- <script src='https://www.google.com/recaptcha/api.js'></script> -->
+
+	</head>
+	<body>
+		
+		<div class="content">
+			<h1>SAGE</h1>
+
+			<div class="message-inputs">
+				<form>
+					<p><input name="username" value="gelli" placeholder="username"></p>
+					<p>
+						<select id="label_select">
+							<option value="">--Please choose an option--</option>
+							<option value="work">Work</option>
+							<option value="love">Love</option>
+							<option value="family">Family</option>
+							<option value="school">School</option>
+						</select>
+					</p>
+					<p><textarea name="letter" value="test" class="new-message" placeholder="type something" cols="35" wrap="soft"></textarea></p>
+					<!-- <div class="g-recaptcha" data-sitekey="6LeRKmoUAAAAAIQY9nBppfhOd5Qsct3JhT4zAAK"></div> -->
+					<p><button class="send">Send</button></p>
+				</form>
+
+				<ul class="letters"></ul>
+			</div>
+
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+		<script src="dist/js/main.js"></script>
+
+	</body>
+</html>
