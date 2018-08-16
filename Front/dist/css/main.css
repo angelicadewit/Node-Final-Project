@@ -118,7 +118,7 @@ h1 {
 }
 
 .letterDiv {
-	font-size: 3em;
+	font-size: 1.25em;
 	background: #ddd;
 	display: inline-block;
 	margin: 10px 0px;
@@ -141,7 +141,7 @@ h1 {
 	text-transform: uppercase;
 	border: 1px solid black;
 	display: inline-block;
-	margin: 15px;
+	margin: 10px;
 	width: fit-content;
 	padding: 5px;
 	position: absolute;
@@ -150,6 +150,7 @@ h1 {
 @media only screen and (min-width: 640px) {
 	.label {
 		bottom: 0;
+		left: 0;
 	}
 }
 
@@ -176,6 +177,8 @@ h1 {
 .salutations {
 	font-family: 'Rouge Script', cursive;
 	text-align: right;
+	font-size: 1.5em;
+	margin-top: 50px;
 }
 
 /*# sourceMappingURL=main.css.map */
