@@ -14,7 +14,7 @@ $submitButton.addEventListener("click", function () {
     }
 
     axios.post(url, {
-        username: usernameInput.value,
+        username: usernameInput.value.substring(0, 1),
         label: labelSelection.value,
         message: letterInput.value
     }).then(function (response) {
@@ -33,24 +33,22 @@ var newLetterOnPage = function newLetterOnPage(letters) {
     console.log("here are are the letters", letters);
     var letterUL = document.querySelector("ul.letters");
 
-    letters.data.forEach(function (letter, i) {
-        var newLetter = document.createElement("li");
+    letters.data.forEach(function (letter) {
+        var newLetterListItem = document.createElement("li");
+        var newLetterDiv = document.createElement("div");
+        var letterLabelDiv = document.createElement("div");
 
-        newLetter.innerHTML = "" + letter.username;
+        newLetterDiv.classList.add("letterDiv");
+        letterLabelDiv.classList.add("label", letter.label);
 
-        // let delButton = document.createElement(`button`)
-        // delButton.textContent = `delete`
+        letterLabelDiv.textContent = letter.label;
 
-        // delButton.addEventListener(`click`, function() {
-        //     axios.delete(`http://localhost:1337/message/`+ i)
-        //     .then(function(response) {
+        newLetterDiv.innerHTML = letter.message + ". Love, " + letter.username;
 
-        //     })
-        //     .catch(function(response) {})
-        // })
+        newLetterDiv.appendChild(letterLabelDiv);
 
-        // newMessage.appendChild(delButton)
-        letterUL.appendChild(newLetter);
+        newLetterListItem.appendChild(newLetterDiv);
+        letterUL.appendChild(newLetterListItem);
     });
 };
 //# sourceMappingURL=main.js.map

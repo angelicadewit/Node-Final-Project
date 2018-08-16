@@ -12,7 +12,7 @@ $submitButton.addEventListener(`click`, function() {
     }
 
 	axios.post(url, {
-        username: usernameInput.value,
+        username: usernameInput.value.substring(0, 1),
         label: labelSelection.value,
         message: letterInput.value,
 	})
@@ -33,24 +33,23 @@ let newLetterOnPage = function(letters){
     console.log(`here are are the letters`, letters)
     let letterUL = document.querySelector(`ul.letters`)
 
-    letters.data.forEach(function(letter, i) {
-        let newLetter = document.createElement(`li`)   
+    letters.data.forEach(function(letter) {
+        let newLetterListItem = document.createElement(`li`)
+        let newLetterDiv = document.createElement(`div`)
+        let letterLabelDiv = document.createElement(`div`)
 
-        newLetter.innerHTML = `${letter.username}`
+        
+        newLetterDiv.classList.add(`letterDiv`)
+        letterLabelDiv.classList.add ("label", letter.label)
 
-        // let delButton = document.createElement(`button`)
-        // delButton.textContent = `delete`
+        letterLabelDiv.textContent = letter.label
+        
+        newLetterDiv.innerHTML = `${letter.message}. Love, ${letter.username}`
 
-        // delButton.addEventListener(`click`, function() {
-        //     axios.delete(`http://localhost:1337/message/`+ i)
-        //     .then(function(response) {
-                
-        //     })
-        //     .catch(function(response) {})
-        // })
+        newLetterDiv.appendChild(letterLabelDiv)
 
-        // newMessage.appendChild(delButton)
-        letterUL.appendChild(newLetter)
+        newLetterListItem.appendChild(newLetterDiv)
+        letterUL.appendChild(newLetterListItem)
 
     })
 }

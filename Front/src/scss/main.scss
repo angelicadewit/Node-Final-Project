@@ -16,6 +16,11 @@ TABLE OF CONTENTS:
 /* 0. Reset ================================= */
 @import 'reset';
 
+@mixin divStyling{
+	padding: 5px;
+	width: fit-content; 
+}
+
 
 /* 1. Main Layout ================================= */
 
@@ -40,65 +45,44 @@ body {
 	max-width: 500px;
 	margin: 140px auto;
 	padding: 30px 20px 30px 30px;
-	.foreground {
-		position: relative;
-		z-index: 2;
-		transform: translateZ(100px);
+	
+	h1{
+		font-size: 3em;
 	}
-	.background {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		left: 0;
-		top: 0;
-		background: white;
-		z-index: 1;
-		// perspective: 2000px;
-		transition: 0.2s;
-		transform: translateX(20px) perspective(600px) rotateY(15deg);
-	}
-	&:hover .background {
-		transform: translateX(-30px) perspective(600px) rotateY(-15deg);		
-	}
-	.logo {
-		position: absolute;
-		top: -30px;
-		width: 60px;
-		z-index: 2;
-		transform: translateZ(100px);
-		transition: 0.3s;
+}
 
-		&:hover {
-			transform: rotate(-0.4turn)
-		}
+.letterDiv{
+	@include divStyling;
+	font-size: 3em;
+	background: #ddd;
+	display: inline-block;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.label{
+	@include divStyling;
+	font-family: "helvetica";
+	font-size: 10px;
+	text-transform: uppercase;
+	border: 1px solid black;
+	display: block;
+	margin-top: 15px;
+
+	&.work{
+		background: greenyellow;
 	}
-	h1 {
-		font-weight: 700;
-		font-size: 22pt;
-		margin: 15px 0;
+
+	&.school{
+		background: #a2d4ff;	
 	}
-	p {
-		color: #777;
-		// margin: 10px 0;
-		line-height: 140%;
+
+	&.love{
+		background: palevioletred;
 	}
-	p.github {
-		font-size: 0.8em;
-		
-		a {
-			opacity: 0.2;
-			transition: 0.3s;
-			&:hover {
-				opacity: 1;
-				color: red;
-			}
-		}
+
+	&.family{
+		background: orange;
 	}
-	code {
-		position: absolute;
-		top: 20px;
-		right: 20px;
-		font-size: 0.8em;
-		opacity: 0.2;
-	}
+
 }
