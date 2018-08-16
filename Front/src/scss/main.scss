@@ -63,29 +63,34 @@ h1{
 	font-size: 3em;
 }
 
-// .letters{
-// 	@include tablet{
-// 		display: flex;
-// 		flex-wrap: wrap;
-// 		justify-content: space-between;
-// 		float: left;
-// 	}
-// 	@include desktop{
-// 		justify-content: flex-start;
-// 	}
-// }
+.letters{
+	@include tablet{
+		// display: flex;
+		// flex-wrap: wrap;
+		// justify-content: space-between;
+		// float: left;
+		column-count: 2;
+		margin-left: 30px;
+	}
+	@include desktop{
+		// justify-content: flex-start;
+		column-count: 3;
+	}
+}
 
 .letters li{
 	@include tablet{
-		margin: 1%;
+		// margin: 1%;
 		// flex-direction: column;
-		width: 48%;
+		// width: 48%;
 		max-height: 10000px;
-		float: left;
+		// float: left;
+		max-width: 768px;
+		column-gap: 1.5em;
 	}
 
 	@include desktop{
-		width: 31%;
+		// width: 31%;
 	}
 }
 

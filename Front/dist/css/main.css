@@ -95,17 +95,23 @@ h1 {
 }
 
 @media only screen and (min-width: 640px) {
-	.letters li {
-		margin: 1%;
-		width: 48%;
-		max-height: 10000px;
-		float: left;
+	.letters {
+		column-count: 2;
+		margin-left: 30px;
 	}
 }
 
 @media only screen and (min-width: 960px) {
+	.letters {
+		column-count: 3;
+	}
+}
+
+@media only screen and (min-width: 640px) {
 	.letters li {
-		width: 31%;
+		max-height: 10000px;
+		max-width: 768px;
+		column-gap: 1.5em;
 	}
 }
 
