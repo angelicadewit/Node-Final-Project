@@ -44,19 +44,28 @@ var newLetterOnPage = function newLetterOnPage(letters) {
 
         letters.data.forEach(function (letter) {
             var newLetterListItem = document.createElement("li");
-            var newLetterDiv = document.createElement("div");
+            // let newLetterDiv = document.createElement(`div`)
             var letterLabelDiv = document.createElement("div");
+            var upvoteBtn = document.createElement("button");
 
-            newLetterDiv.classList.add("letterDiv");
+            upvoteBtn.innerHTML = "UP";
+
+            upvoteBtn.addEventListener("click", function () {
+                // ajax req for /letters/:letterID/upvote
+            });
+
+            // newLetterListItem.classList.add(`letterDiv`)
             letterLabelDiv.classList.add("label", letter.label);
 
             letterLabelDiv.textContent = letter.label;
 
-            newLetterDiv.innerHTML = "<p>" + letter.message + ".</p> <p class=\"salutations\">Love, " + letter.username + "</p>";
+            newLetterListItem.innerHTML = "<p>" + letter.message + ".</p> <p class=\"salutations\">Love, " + letter.username + "</p>";
 
-            newLetterDiv.appendChild(letterLabelDiv);
+            newLetterListItem.appendChild(upvoteBtn);
 
-            newLetterListItem.appendChild(newLetterDiv);
+            newLetterListItem.appendChild(letterLabelDiv);
+
+            // newLetterListItem.appendChild(newLetterDiv)
             letterUL.appendChild(newLetterListItem);
         });
     }

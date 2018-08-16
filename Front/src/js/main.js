@@ -45,20 +45,28 @@ let newLetterOnPage = function(letters){
 
         letters.data.forEach(function(letter) {
             let newLetterListItem = document.createElement(`li`)
-            let newLetterDiv = document.createElement(`div`)
+            // let newLetterDiv = document.createElement(`div`)
             let letterLabelDiv = document.createElement(`div`)
+            let upvoteBtn = document.createElement(`button`)
 
+            upvoteBtn.innerHTML = "UP";
+
+            upvoteBtn.addEventListener("click", function() {
+                // ajax req for /letters/:letterID/upvote
+            })
             
-            newLetterDiv.classList.add(`letterDiv`)
+            // newLetterListItem.classList.add(`letterDiv`)
             letterLabelDiv.classList.add ("label", letter.label)
 
             letterLabelDiv.textContent = letter.label
             
-            newLetterDiv.innerHTML = `<p>${letter.message}.</p> <p class="salutations">Love, ${letter.username}</p>`
+            newLetterListItem.innerHTML = `<p>${letter.message}.</p> <p class="salutations">Love, ${letter.username}</p>`
+            
+            newLetterListItem.appendChild(upvoteBtn)
 
-            newLetterDiv.appendChild(letterLabelDiv)
+            newLetterListItem.appendChild(letterLabelDiv)
 
-            newLetterListItem.appendChild(newLetterDiv)
+            // newLetterListItem.appendChild(newLetterDiv)
             letterUL.appendChild(newLetterListItem)
 
         })
