@@ -14,14 +14,14 @@
 	<body>
 		
 		<div class="content">
-			<h1>SAGE</h1>
 
 			<div class="message-inputs">
+				<h1>SAGE</h1>
 				<form>
 					<p><input name="username" value="gelli" placeholder="username"></p>
 					<p>
 						<select id="label_select">
-							<option value="">--Please choose an option--</option>
+							<option value="" selected disabled hidden>--Please choose an option--</option>
 							<option value="work">Work</option>
 							<option value="love">Love</option>
 							<option value="family">Family</option>
@@ -33,10 +33,9 @@
 					<!-- <div class="g-recaptcha" data-sitekey="6LeRKmoUAAAAAIQY9nBppfhOd5Qsct3JhT4zAAK"></div> -->
 					<p><button class="send">Send</button></p>
 				</form>
-
-				<ul class="letters"></ul>
 			</div>
 
+			<ul class="letters"></ul>
 		</div>
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>

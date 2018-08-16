@@ -14,6 +14,10 @@ $submitButton.addEventListener("click", function () {
         usernameInput.value = "Me";
     }
 
+    if (!labelSelection.value) {
+        labelSelection.value = "misc";
+    }
+
     axios.post(url, {
         username: usernameInput.value.substring(0, 1).toUpperCase(),
         label: labelSelection.value,

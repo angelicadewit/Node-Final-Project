@@ -54,30 +54,36 @@ body {
 
 .content{
 	margin: 20px;
+	@include desktop{
+		display: flex;
+	}
 }
 	
 h1{
 	font-size: 3em;
 }
 
-.letters{
-	@include tablet{
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-	}
-	@include desktop{
-		justify-content: flex-start;
-	}
-}
+// .letters{
+// 	@include tablet{
+// 		display: flex;
+// 		flex-wrap: wrap;
+// 		justify-content: space-between;
+// 		float: left;
+// 	}
+// 	@include desktop{
+// 		justify-content: flex-start;
+// 	}
+// }
 
 .letters li{
 	@include tablet{
 		margin: 1%;
-		flex-direction: column;
+		// flex-direction: column;
 		width: 48%;
 		max-height: 10000px;
+		float: left;
 	}
+
 	@include desktop{
 		width: 31%;
 	}
@@ -91,11 +97,14 @@ h1{
 	padding: 20px;
 	font-family: "Varela Round";
 	position: relative;
+	line-height: 1.2em;
+	// width: 500px;
 	
 	@include tablet{
 		width: 100%;
 		height: 100%;
 		vertical-align: bottom;
+		overflow: auto;
 	}
 }
 
@@ -141,4 +150,5 @@ h1{
 	text-align: right;
 	font-size: 1.5em;
 	margin-top: 50px;
+	padding-bottom: 50px;
 }

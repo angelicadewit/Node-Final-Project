@@ -19,7 +19,7 @@ app.get('/', function(req, res){
 
 app.post('/letters', function(req, res){
     res.send(`This is how you add letter`)
-    letters.push(req.body)
+    letters.unshift(req.body)
     console.log(`letters array:`, letters)
 })
 
