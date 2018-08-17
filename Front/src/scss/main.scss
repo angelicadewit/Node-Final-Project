@@ -63,6 +63,13 @@ h1{
 	font-size: 3em;
 }
 
+.message-inputs{
+	@include desktop{
+		position: fixed;
+  		top: 3em; 
+	}
+}
+
 .letters{
 	@include tablet{
 		// display: flex;
@@ -75,6 +82,8 @@ h1{
 	@include desktop{
 		// justify-content: flex-start;
 		column-count: 3;
+		width: 80%;
+		margin-left: auto;
 	}
 }
 
@@ -99,13 +108,17 @@ h1{
 		// 	width: 100%;
 			// height: 100%;
 		break-inside: avoid;
+		page-break-inside: avoid;
 		// 	vertical-align: bottom;
 		// }
-	}
 
-	@include desktop{
-		// width: 31%;
+		&:first-child{
+			margin-top: 0px;
+		}
 	}
+	// @include desktop{
+	// 	// width: 31%;
+	// }
 }
 
 // .letterDiv{
@@ -127,7 +140,7 @@ h1{
 // 	}
 // }
 
-.label{
+.label {
 	font-family: "helvetica";
 	font-size: 10px;
 	text-transform: uppercase;

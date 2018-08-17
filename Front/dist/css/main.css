@@ -94,6 +94,13 @@ h1 {
 	font-size: 3em;
 }
 
+@media only screen and (min-width: 960px) {
+	.message-inputs {
+		position: fixed;
+		top: 3em;
+	}
+}
+
 @media only screen and (min-width: 640px) {
 	.letters {
 		column-count: 2;
@@ -104,6 +111,8 @@ h1 {
 @media only screen and (min-width: 960px) {
 	.letters {
 		column-count: 3;
+		width: 80%;
+		margin-left: auto;
 	}
 }
 
@@ -119,6 +128,10 @@ h1 {
 		position: relative;
 		line-height: 1.2em;
 		break-inside: avoid;
+		page-break-inside: avoid;
+	}
+	.letters li:first-child {
+		margin-top: 0px;
 	}
 }
 

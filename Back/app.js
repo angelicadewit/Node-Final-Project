@@ -23,6 +23,10 @@ app.post('/letters', function(req, res){
     console.log(`letters array:`, letters)
 })
 
+app.get(`/letters/:id`, function(req, res){
+    res.send(req.param.id)
+})
+
 app.get(`/letters`, function(req, res){
     res.send(letters)
 })

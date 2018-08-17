@@ -4,12 +4,17 @@ let usernameInput = document.querySelector(`[name="username"]`)
 let labelSelection = document.querySelector(`#label_select`)
 let letterInput = document.querySelector(`[name="letter"]`)
 let letterUL = document.querySelector(`ul.letters`)
+let idCounter = 0
 
 $submitButton.addEventListener(`click`, function() {
     let url = `http://localhost:1337/letters`
+    let enteredUsername = usernameInput.value
+    let newUsername = ``
 
-    if (!usernameInput.value) {
-        usernameInput.value = `Me`
+    if (!enteredUsername) {
+        newUsername = `Me`
+    } else {
+        newUsername = enteredUsername.substring(0,1).toUpperCase()
     }
 
     if (!labelSelection.value) {
@@ -18,7 +23,8 @@ $submitButton.addEventListener(`click`, function() {
 
 
 	axios.post(url, {
-        username: usernameInput.value.substring(0, 1).toUpperCase(),
+        id: idCounter++,
+        username: newUsername,
         label: labelSelection.value,
         message: letterInput.value,
 	})
