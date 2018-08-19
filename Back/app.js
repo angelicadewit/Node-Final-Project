@@ -11,6 +11,7 @@ app.use(bodyParser.json())
 
 
 let letters = []
+let idCounter = 0
 
 
 app.get('/', function(req, res){
@@ -18,13 +19,28 @@ app.get('/', function(req, res){
 })
 
 app.post('/letters', function(req, res){
-    res.send(`This is how you add letter`)
-    letters.unshift(req.body)
+    // res.send(`This is how you add letter`)
     console.log(`letters array:`, letters)
+
+    let newLetter= {
+        id: idCounter++,
+        username: req.body.username,
+        label: req.body.label,
+        message: req.body.message,
+    }
+
+    letters.unshift(newLetter)
+
+    res.send([letters])
+
 })
 
+// app.get(`/letters/:id`, function(req, res){
+//     res.send(req.body.id)
+// })
+
 app.get(`/letters/:id`, function(req, res){
-    res.send(req.param.id)
+    res.send(letters.id)
 })
 
 app.get(`/letters`, function(req, res){
