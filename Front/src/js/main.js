@@ -63,6 +63,12 @@ let newLetterOnPage = function(letters){
             
             // newLetterListItem.classList.add(`letterDiv`)
             letterLabelDiv.classList.add ("label", letter.label)
+            letterLabelDiv.addEventListener("click", function() {
+                axios.get(`http://localhost:1337/letters/:${letter.label}`).then(function (response) {
+                    console.log(   `http://localhost:1337/letters/${letter.label}`);
+                    // newLetterOnPage(response);
+                });
+            })
 
             letterLabelDiv.textContent = letter.label
             

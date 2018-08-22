@@ -39,14 +39,23 @@ app.post('/letters', function(req, res){
 //     res.send(req.body.id)
 // })
 
-app.get(`/letters/:id`, function(req, res){
-    res.send(letters.id)
-})
+// app.get(`/letter/:id`, function(req, res){
+//     res.send(letters.id)
+// })
 
 app.get(`/letters`, function(req, res){
     res.send(letters)
 })
 
+app.get(`/letters/:label`, function(req, res){
+
+    let label = req.params.label 
+    
+    let filteredLetters = letters.filter(function(letter){
+        return letter.label === label
+    })
+    res.send(filteredLetters)
+})
 
 app.listen(1337, function(){
     console.log(`Example app listening on port 1337!`)
