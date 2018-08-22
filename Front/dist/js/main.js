@@ -6,7 +6,12 @@ var usernameInput = document.querySelector("[name=\"username\"]");
 var labelSelection = document.querySelector("#label_select");
 var letterInput = document.querySelector("[name=\"letter\"]");
 var letterUL = document.querySelector("ul.letters");
-var idCounter = 0;
+var allFilter = document.querySelector(".all");
+var workFilter = document.querySelector(".work");
+var loveFilter = document.querySelector(".love");
+var familyFilter = document.querySelector(".family");
+var schoolFilter = document.querySelector(".school");
+var miscFilter = document.querySelector(".misc");
 
 $submitButton.addEventListener("click", function () {
     var url = "http://localhost:1337/letters";
@@ -24,7 +29,6 @@ $submitButton.addEventListener("click", function () {
     }
 
     axios.post(url, {
-        id: idCounter++,
         username: newUsername,
         label: labelSelection.value,
         message: letterInput.value
@@ -41,7 +45,6 @@ axios.get("http://localhost:1337/letters").then(function (response) {
 });
 
 var newLetterOnPage = function newLetterOnPage(letters) {
-
     if (letters.data.length === 0) {
         letterUL.innerHTML += "<p>There are no letters available. Want to write something?</p>";
     } else {
@@ -81,4 +84,45 @@ var newLetterOnPage = function newLetterOnPage(letters) {
         });
     }
 };
+
+allFilter.addEventListener("click", function () {
+    axios.get("http://localhost:1337/letters/").then(function (response) {
+        newLetterOnPage(response);
+    });
+});
+
+workFilter.addEventListener("click", function () {
+    axios.get("http://localhost:1337/letters/work").then(function (response) {
+        letterUL.innerHTML = "";
+        newLetterOnPage(response);
+    });
+});
+
+loveFilter.addEventListener("click", function () {
+    axios.get("http://localhost:1337/letters/love").then(function (response) {
+        letterUL.innerHTML = "";
+        newLetterOnPage(response);
+    });
+});
+
+familyFilter.addEventListener("click", function () {
+    axios.get("http://localhost:1337/letters/family").then(function (response) {
+        letterUL.innerHTML = "";
+        newLetterOnPage(response);
+    });
+});
+
+schoolFilter.addEventListener("click", function () {
+    axios.get("http://localhost:1337/letters/school").then(function (response) {
+        letterUL.innerHTML = "";
+        newLetterOnPage(response);
+    });
+});
+
+miscFilter.addEventListener("click", function () {
+    axios.get("http://localhost:1337/letters/misc").then(function (response) {
+        letterUL.innerHTML = "";
+        newLetterOnPage(response);
+    });
+});
 //# sourceMappingURL=main.js.map

@@ -140,6 +140,13 @@ h1{
 // 	}
 // }
 
+.label-cluster{
+	display: flex;
+	margin: 20px 0px;
+	flex-wrap: wrap;
+	width: 150px;
+}
+
 .label {
 	font-family: "helvetica";
 	font-size: 10px;
@@ -154,6 +161,11 @@ h1{
 	@include tablet{
 		bottom: 0;
 		right: 0;
+	}
+
+	&.side{
+		position: relative;
+		margin: 2px;
 	}
 
 	&.work{
