@@ -28,7 +28,6 @@ $submitButton.addEventListener(`click`, function() {
         labelSelection.value = `misc`
     }
 
-
 	axios.post(url, {
         username: newUsername,
         label: labelSelection.value,
@@ -43,8 +42,9 @@ $submitButton.addEventListener(`click`, function() {
 })
 
 axios.get("http://localhost:1337/letters").then(function (response) {
-    console.log(response);
-    newLetterOnPage(response);
+    console.log(response)
+    letterUL.innerHTML = ``
+    newLetterOnPage(response)
 });
 
 let newLetterOnPage = function(letters){
@@ -70,6 +70,7 @@ let newLetterOnPage = function(letters){
             letterLabelDiv.classList.add ("label", letter.label)
             letterLabelDiv.addEventListener("click", function() {
                 axios.get(`http://localhost:1337/letters/${letter.label}`).then(function (response) {
+                    // letterUL.innerHTML = ``
                     newLetterOnPage(response);
                 });
             })
@@ -89,7 +90,8 @@ let newLetterOnPage = function(letters){
 }
 
 allFilter.addEventListener("click", function() {
-    axios.get(`http://localhost:1337/letters/`).then(function (response) {   
+    axios.get(`http://localhost:1337/letters/`).then(function (response) { 
+    letterUL.innerHTML = ``  
     newLetterOnPage(response);
     });
 })

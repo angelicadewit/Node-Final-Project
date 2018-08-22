@@ -41,6 +41,7 @@ $submitButton.addEventListener("click", function () {
 
 axios.get("http://localhost:1337/letters").then(function (response) {
     console.log(response);
+    letterUL.innerHTML = "";
     newLetterOnPage(response);
 });
 
@@ -67,6 +68,7 @@ var newLetterOnPage = function newLetterOnPage(letters) {
             letterLabelDiv.classList.add("label", letter.label);
             letterLabelDiv.addEventListener("click", function () {
                 axios.get("http://localhost:1337/letters/" + letter.label).then(function (response) {
+                    // letterUL.innerHTML = ``
                     newLetterOnPage(response);
                 });
             });
@@ -87,6 +89,7 @@ var newLetterOnPage = function newLetterOnPage(letters) {
 
 allFilter.addEventListener("click", function () {
     axios.get("http://localhost:1337/letters/").then(function (response) {
+        letterUL.innerHTML = "";
         newLetterOnPage(response);
     });
 });
