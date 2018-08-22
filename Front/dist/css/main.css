@@ -116,6 +116,19 @@ h1 {
 	}
 }
 
+.letters li {
+	font-size: 1.25em;
+	background: #ddd;
+	display: inline-block;
+	margin: 10px 0px;
+	padding: 20px;
+	font-family: "Varela Round";
+	position: relative;
+	line-height: 1.2em;
+	width: 100%;
+	vertical-align: top;
+}
+
 @media only screen and (min-width: 640px) {
 	.letters li {
 		max-width: 768px;
@@ -130,8 +143,8 @@ h1 {
 		break-inside: avoid;
 		page-break-inside: avoid;
 	}
-	.letters li:first-child {
-		margin-top: 0px;
+	.letters li:first-of-type {
+		margin-top: 10px;
 	}
 }
 
@@ -152,18 +165,18 @@ h1 {
 	width: fit-content;
 	padding: 5px;
 	position: absolute;
-}
-
-@media only screen and (min-width: 640px) {
-	.label {
-		bottom: 0;
-		right: 0;
-	}
+	cursor: pointer;
+	bottom: 0;
+	right: 0;
 }
 
 .label.side {
 	position: relative;
 	margin: 2px;
+}
+
+.label.all {
+	background: #48d1cc;
 }
 
 .label.work {

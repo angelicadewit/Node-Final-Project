@@ -69,7 +69,7 @@ let newLetterOnPage = function(letters){
             // newLetterListItem.classList.add(`letterDiv`)
             letterLabelDiv.classList.add ("label", letter.label)
             letterLabelDiv.addEventListener("click", function() {
-                axios.get(`http://localhost:1337/letters/${letter.label}`).then(function (response) {
+                axios.get(`http://localhost:1337/letters/type/${letter.label}`).then(function (response) {
                     // letterUL.innerHTML = ``
                     newLetterOnPage(response);
                 });
@@ -97,35 +97,35 @@ allFilter.addEventListener("click", function() {
 })
 
 workFilter.addEventListener("click", function() {
-    axios.get(`http://localhost:1337/letters/work`).then(function (response) {
+    axios.get(`http://localhost:1337/letters/type/work`).then(function (response) {
     letterUL.innerHTML = ``    
     newLetterOnPage(response);
     });
 })
 
 loveFilter.addEventListener("click", function() {
-    axios.get(`http://localhost:1337/letters/love`).then(function (response) {
+    axios.get(`http://localhost:1337/letters/type/love`).then(function (response) {
     letterUL.innerHTML = ``    
     newLetterOnPage(response);
     });
 })
 
 familyFilter.addEventListener("click", function() {
-    axios.get(`http://localhost:1337/letters/family`).then(function (response) {
+    axios.get(`http://localhost:1337/letters/type/family`).then(function (response) {
     letterUL.innerHTML = ``    
     newLetterOnPage(response);
     });
 })
 
 schoolFilter.addEventListener("click", function() {
-    axios.get(`http://localhost:1337/letters/school`).then(function (response) {
+    axios.get(`http://localhost:1337/letters/type/school`).then(function (response) {
     letterUL.innerHTML = ``    
     newLetterOnPage(response);
     });
 })
 
 miscFilter.addEventListener("click", function() {
-    axios.get(`http://localhost:1337/letters/misc`).then(function (response) {
+    axios.get(`http://localhost:1337/letters/type/misc`).then(function (response) {
     letterUL.innerHTML = ``    
     newLetterOnPage(response);
     });

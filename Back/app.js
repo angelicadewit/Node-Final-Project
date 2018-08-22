@@ -35,8 +35,13 @@ app.post('/letters', function(req, res){
 
 })
 
+
+
+
 // app.get(`/letters/:id`, function(req, res){
-//     res.send(req.body.id)
+//     res.send(letters.filter(function(){
+
+//     })
 // })
 
 // app.get(`/letter/:id`, function(req, res){
@@ -47,7 +52,7 @@ app.get(`/letters`, function(req, res){
     res.send(letters)
 })
 
-app.get(`/letters/:label`, function(req, res){
+app.get(`/letters/type/:label`, function(req, res){
 
     let label = req.params.label 
     
