@@ -13,8 +13,10 @@ var familyFilter = document.querySelector(".family");
 var schoolFilter = document.querySelector(".school");
 var miscFilter = document.querySelector(".misc");
 
+var localURL = "http://localhost:1337/letters";
+var liveURL = "http://206.189.78.79:1337";
+
 $submitButton.addEventListener("click", function () {
-    var url = "http://localhost:1337/letters";
     var enteredUsername = usernameInput.value;
     var newUsername = "";
 
@@ -28,7 +30,7 @@ $submitButton.addEventListener("click", function () {
         labelSelection.value = "misc";
     }
 
-    axios.post(url, {
+    axios.post(localURL, {
         username: newUsername,
         label: labelSelection.value,
         message: letterInput.value
@@ -56,12 +58,18 @@ var newLetterOnPage = function newLetterOnPage(letters) {
             var newLetterListItem = document.createElement("li");
             // let newLetterDiv = document.createElement(`div`)
             var letterLabelDiv = document.createElement("div");
-            var upvoteBtn = document.createElement("button");
+            var reactionsDiv = document.createElement("div");
+            var numberOfLovesSpan = document.createElement("span");
+            var lovesBtn = document.createElement("img");
 
-            upvoteBtn.innerHTML = "UP";
+            lovesBtn.src = "../dist/img/56-3.png";
+            lovesBtn.classList.add("reaction");
 
-            upvoteBtn.addEventListener("click", function () {
-                // ajax req for /letters/:letterID/upvote
+            lovesBtn.addEventListener("click", function () {
+                // /letters/:id/loves
+                axios.post(localURL + "/" + letter.id + "/love").then(function (response) {
+                    console.log(response);
+                });
             });
 
             // newLetterListItem.classList.add(`letterDiv`)
@@ -77,7 +85,10 @@ var newLetterOnPage = function newLetterOnPage(letters) {
 
             newLetterListItem.innerHTML = "<p>" + letter.message + ".</p> <p class=\"salutations\">Love, " + letter.username + "</p>";
 
-            newLetterListItem.appendChild(upvoteBtn);
+            reactionsDiv.appendChild(numberOfLovesSpan);
+            reactionsDiv.appendChild(lovesBtn);
+
+            newLetterListItem.appendChild(reactionsDiv);
 
             newLetterListItem.appendChild(letterLabelDiv);
 

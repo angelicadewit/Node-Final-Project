@@ -207,4 +207,13 @@ h1 {
 	padding-bottom: 50px;
 }
 
+.reaction {
+	bottom: 0;
+	left: 0;
+	display: inline-block;
+	position: absolute;
+	margin: 10px;
+	cursor: pointer;
+}
+
 /*# sourceMappingURL=main.css.map */

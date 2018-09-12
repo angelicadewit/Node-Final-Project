@@ -11,10 +11,12 @@ let familyFilter = document.querySelector(`.family`)
 let schoolFilter = document.querySelector(`.school`)
 let miscFilter = document.querySelector(`.misc`)
 
+let localURL = `http://localhost:1337/letters`
+let liveURL = `http://206.189.78.79:1337`
+
 
 
 $submitButton.addEventListener(`click`, function() {
-    let url = `http://localhost:1337/letters`
     let enteredUsername = usernameInput.value
     let newUsername = ``
 
@@ -28,7 +30,7 @@ $submitButton.addEventListener(`click`, function() {
         labelSelection.value = `misc`
     }
 
-	axios.post(url, {
+	axios.post(localURL, {
         username: newUsername,
         label: labelSelection.value,
         message: letterInput.value,
@@ -58,12 +60,19 @@ let newLetterOnPage = function(letters){
             let newLetterListItem = document.createElement(`li`)
             // let newLetterDiv = document.createElement(`div`)
             let letterLabelDiv = document.createElement(`div`)
-            let upvoteBtn = document.createElement(`button`)
+            let reactionsDiv = document.createElement(`div`)
+            let numberOfLovesSpan = document.createElement(`span`)
+            let lovesBtn = document.createElement(`img`)
 
-            upvoteBtn.innerHTML = "UP";
+            lovesBtn.src = "../dist/img/56-3.png";
+            lovesBtn.classList.add(`reaction`)
 
-            upvoteBtn.addEventListener("click", function() {
-                // ajax req for /letters/:letterID/upvote
+            lovesBtn.addEventListener("click", function() {
+                // /letters/:id/loves
+                axios.post(localURL + "/" + letter.id + "/love")
+                    .then((response) => {
+                        console.log(response)
+                    })
             })
             
             // newLetterListItem.classList.add(`letterDiv`)
@@ -79,7 +88,11 @@ let newLetterOnPage = function(letters){
             
             newLetterListItem.innerHTML = `<p>${letter.message}.</p> <p class="salutations">Love, ${letter.username}</p>`
             
-            newLetterListItem.appendChild(upvoteBtn)
+            reactionsDiv.appendChild(numberOfLovesSpan)
+            reactionsDiv.appendChild(lovesBtn)
+
+            
+            newLetterListItem.appendChild(reactionsDiv)
 
             newLetterListItem.appendChild(letterLabelDiv)
 

@@ -66,7 +66,7 @@ h1{
 .message-inputs{
 	@include desktop{
 		position: fixed;
-  		top: 3em; 
+		top: 3em; 
 	}
 }
 
@@ -212,4 +212,13 @@ h1{
 	font-size: 1.5em;
 	margin-top: 50px;
 	padding-bottom: 50px;
+}
+
+.reaction{
+	bottom: 0;
+	left: 0;
+	display: inline-block;
+	position: absolute;
+	margin: 10px;
+	cursor: pointer;
 }
