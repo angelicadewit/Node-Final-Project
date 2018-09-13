@@ -100,14 +100,26 @@ h1{
 	width: 100%;
 	vertical-align: top;
 
+
+
+
 	@include tablet{
 		max-width: 768px;
 		column-gap: 1.5em;
 		font-size: 1.25em;
 		break-inside: avoid;
 		page-break-inside: avoid;
+		min-height: 400px;
+
 		&:first-of-type{
 			margin-top: 10px;
+		}
+	}
+
+	p{
+
+		@include desktop{
+			width: 80%;
 		}
 	}
 	// @include desktop{
@@ -115,24 +127,24 @@ h1{
 	// }
 }
 
-// .letterDiv{
-	// font-size: 1.25em;
-	// background: #ddd;
+.letterDiv{
+	font-size: 1.25em;
+	background: #ddd;
 	// display: inline-block;
-	// margin: 10px 0px;
-	// padding: 20px;
-	// font-family: "Varela Round";
-	// position: relative;
-	// line-height: 1.2em;
-	// width: 500px;
+	margin: 10px 0px;
+	padding: 20px;
+	font-family: "Varela Round";
+	position: relative;
+	line-height: 1.2em;
+	width: 500px;
 	
-	// @include tablet{
-	// 	width: 100%;
-	// 	height: 100%;
-	// 	vertical-align: bottom;
-		// overflow: auto;
-// 	}
-// }
+	@include tablet{
+		width: 100%;
+		height: 100%;
+		vertical-align: bottom;
+		overflow: auto;
+	}
+}
 
 .label-cluster{
 	display: flex;
@@ -189,7 +201,6 @@ h1{
 
 	&.replies{
 		position: relative;
-
 	}
 }
 
@@ -209,37 +220,24 @@ h1{
 	font-size: 1.5em;
 	margin-top: 50px;
 	padding-bottom: 50px;
+	bottom: 0px;
+	margin-bottom: auto;
 }
 
 .reaction{
-	display: inline-block;
-	// position: relative;
-	margin: 10px;
-	cursor: pointer;
-	width: 100%;
-	bottom: 0;
-
-	img{
-		bottom: 0;
-	}
-
-	.replies{
-		font-family: "helvetica";
-		font-size: 10px;
-		text-transform: uppercase;
-		border: 1px solid black;
-		display: inline-block;
-		margin: 10px;
-		width: fit-content; 
-		padding: 5px;
-		position: absolute;
-		cursor: pointer;	
-	}
-
-	.reply{
-		width: 500px;
-		position: relative;
-		background: red;
-	}
 	
+	
+	@include tablet{
+		display: inline-block;
+		margin: 20px;
+		cursor: pointer;
+		width: 100%;
+		bottom: 0;
+		position: absolute;
+		right:  0;
+		top:  0;
+		width: 60px;
+		border-left: 1px solid black;
+		padding: 0px 10px;
+	}
 }

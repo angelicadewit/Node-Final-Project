@@ -136,9 +136,36 @@ h1 {
 		font-size: 1.25em;
 		break-inside: avoid;
 		page-break-inside: avoid;
+		min-height: 400px;
 	}
 	.letters li:first-of-type {
 		margin-top: 10px;
+	}
+}
+
+@media only screen and (min-width: 960px) {
+	.letters li p {
+		width: 80%;
+	}
+}
+
+.letterDiv {
+	font-size: 1.25em;
+	background: #ddd;
+	margin: 10px 0px;
+	padding: 20px;
+	font-family: "Varela Round";
+	position: relative;
+	line-height: 1.2em;
+	width: 500px;
+}
+
+@media only screen and (min-width: 640px) {
+	.letterDiv {
+		width: 100%;
+		height: 100%;
+		vertical-align: bottom;
+		overflow: auto;
 	}
 }
 
@@ -213,37 +240,24 @@ h1 {
 	font-size: 1.5em;
 	margin-top: 50px;
 	padding-bottom: 50px;
+	bottom: 0px;
+	margin-bottom: auto;
 }
 
-.reaction {
-	display: inline-block;
-	margin: 10px;
-	cursor: pointer;
-	width: 100%;
-	bottom: 0;
-}
-
-.reaction img {
-	bottom: 0;
-}
-
-.reaction .replies {
-	font-family: "helvetica";
-	font-size: 10px;
-	text-transform: uppercase;
-	border: 1px solid black;
-	display: inline-block;
-	margin: 10px;
-	width: fit-content;
-	padding: 5px;
-	position: absolute;
-	cursor: pointer;
-}
-
-.reaction .reply {
-	width: 500px;
-	position: relative;
-	background: red;
+@media only screen and (min-width: 640px) {
+	.reaction {
+		display: inline-block;
+		margin: 20px;
+		cursor: pointer;
+		width: 100%;
+		bottom: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 60px;
+		border-left: 1px solid black;
+		padding: 0px 10px;
+	}
 }
 
 /*# sourceMappingURL=main.css.map */

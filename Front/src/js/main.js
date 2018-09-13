@@ -103,18 +103,19 @@ let newLetterOnPage = function(letters){
 
             numberOfLoveSpan.textContent = letter.love
             numberOfLoveSpan.classList.add(`loveReactions`)
-            loveBtn.src = "../dist/img/56-3.png"
+            loveBtn.src = "dist/img/56-3.png"
 
             numberOfSurpriseSpan.textContent = letter.surprise
-            surpriseBtn.src = "../dist/img/56-1.png"
+            surpriseBtn.src = "dist/img/56-1.png"
             numberOfSurpriseSpan.classList.add(`surpriseReactions`)
 
             numberOfSadSpan.textContent = letter.sad
-            sadBtn.src = "../dist/img/56-2.png"
+            sadBtn.src = "dist/img/56-2.png"
             numberOfSadSpan.classList.add(`sadReactions`)
             
 
             reactionsDiv.classList.add(`reaction`)
+            newLetterDiv.classList.add(`letter`)
 
 
             loveBtn.addEventListener("click", function() {
