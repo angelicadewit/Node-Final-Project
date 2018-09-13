@@ -10,8 +10,8 @@ let loveFilter = document.querySelector(`.love`)
 let familyFilter = document.querySelector(`.family`)
 let schoolFilter = document.querySelector(`.school`)
 let miscFilter = document.querySelector(`.misc`)
-let loveBtn = document.querySelector(`.loveBtn`)
-let numberOfLoveSpan = document.querySelector(`.loveReactions`)
+// let loveBtn = document.querySelector(`.loveBtn`)
+// let numberOfLoveSpan = document.querySelector(`.loveReactions`)
 
 let localURL = `http://localhost:1337/letters`
 let liveURL = `http://206.189.78.79:1337`
@@ -58,6 +58,22 @@ axios.get("http://localhost:1337/letters").then(function (response) {
 //     }
 // }
 
+let showingReplies = function(){
+
+    let repliesDiv = document.querySelectorAll(`.replies`)
+    
+    repliesDiv.forEach(function(reply){
+        let serverReplyDiv = document.createElement('div')
+
+        serverReplyDiv.classList.add(`reply`)
+        
+        serverReplyDiv.style.left = reply.getBoundingClientRect().right + window.scrollX + "px";
+        serverReplyDiv.style.top = reply.getBoundingClientRect().top + window.scrollY + "px";
+        reply.appendChild(serverReplyDiv)
+    })
+		
+}
+
 
 
 let newLetterOnPage = function(letters){
@@ -69,7 +85,8 @@ let newLetterOnPage = function(letters){
 
         letters.data.forEach(function(letter) {
             let newLetterListItem = document.createElement(`li`)
-            // let newLetterDiv = document.createElement(`div`)
+
+            let newLetterDiv = document.createElement(`div`)
             let letterLabelDiv = document.createElement(`div`)
             let reactionsDiv = document.createElement(`div`)
 
@@ -82,14 +99,12 @@ let newLetterOnPage = function(letters){
             let numberOfSadSpan = document.createElement(`span`)
             let sadBtn = document.createElement(`img`)
 
-            let repliesSpan = document.createElement(`span`)
+            let repliesDiv = document.createElement(`div`)
             // let repliesSpan = document.createElement(`span`)
 
             numberOfLoveSpan.textContent = letter.love
             numberOfLoveSpan.classList.add(`loveReactions`)
             loveBtn.src = "../dist/img/56-3.png"
-
-            
 
             numberOfSurpriseSpan.textContent = letter.surprise
             surpriseBtn.src = "../dist/img/56-1.png"
@@ -98,9 +113,7 @@ let newLetterOnPage = function(letters){
             numberOfSadSpan.textContent = letter.sad
             sadBtn.src = "../dist/img/56-2.png"
             numberOfSadSpan.classList.add(`sadReactions`)
-
-            repliesSpan.textContent = letter.replies.length
-            sadBtn.src = "../dist/img/56-2.png"
+            
 
             reactionsDiv.classList.add(`reaction`)
 
@@ -138,9 +151,17 @@ let newLetterOnPage = function(letters){
                 });
             })
 
+
             letterLabelDiv.textContent = letter.label
+
+            repliesDiv.classList.add ("replies")
+            repliesDiv.addEventListener("click", showingReplies)
+
+            repliesDiv.textContent = `${letter.replies.length} replies`
             
-            newLetterListItem.innerHTML = `<p>${letter.message}.</p> <p class="salutations">Love, ${letter.username}</p>`
+            newLetterDiv.innerHTML = `<p>${letter.message}.</p> <p class="salutations">Love, ${letter.username}</p>`
+
+            
             
             reactionsDiv.appendChild(numberOfLoveSpan)
             reactionsDiv.appendChild(loveBtn)
@@ -150,9 +171,13 @@ let newLetterOnPage = function(letters){
 
             reactionsDiv.appendChild(numberOfSadSpan)
             reactionsDiv.appendChild(sadBtn)
+
+            reactionsDiv.appendChild(repliesDiv)
             
+            reactionsDiv.appendChild(letterLabelDiv)
+    
+            newLetterListItem.appendChild(newLetterDiv)
             newLetterListItem.appendChild(reactionsDiv)
-            newLetterListItem.appendChild(letterLabelDiv)
 
 
             letterUL.appendChild(newLetterListItem)

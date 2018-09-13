@@ -53,7 +53,7 @@ app.post(`/letters/:id/love`, function(req, res){
     let foundLetterID = req.params.id
 
     let foundLetterIDInArray = letters.find(function(letter) {
-        return letter.id = foundLetterID
+        return letter.id == foundLetterID
     });
 
     
@@ -68,11 +68,26 @@ app.post(`/letters/:id/sad`, function(req, res){
     let foundLetterID = req.params.id
 
     let foundLetterIDInArray = letters.find(function(letter) {
-        return letter.id = foundLetterID
+        return letter.id == foundLetterID
     });
 
     
     foundLetterIDInArray.sad++
+
+    res.send(String(foundLetterIDInArray.sad));
+})
+
+app.post(`/letters/:id/replies`, function(req, res){
+    console.log(req.params.id)
+
+    let foundRepliesID = req.params.id
+
+    let foundRepliesIDInArray = letters.find(function(letter) {
+        return letter.id == foundLetterID
+    });
+
+    
+    foundLetterIDInArray
 
     res.send(String(foundLetterIDInArray.sad));
 })
@@ -83,7 +98,7 @@ app.post(`/letters/:id/surprise`, function(req, res){
     let foundLetterID = req.params.id
 
     let foundLetterIDInArray = letters.find(function(letter) {
-        return letter.id = foundLetterID
+        return letter.id == foundLetterID
     });
 
     

@@ -199,6 +199,10 @@ h1 {
 	background: plum;
 }
 
+.label.replies {
+	position: relative;
+}
+
 .salutations {
 	font-family: 'Rouge Script', cursive;
 	text-align: right;
@@ -208,17 +212,34 @@ h1 {
 }
 
 .reaction {
-	bottom: 0;
-	left: 0;
 	display: inline-block;
-	position: absolute;
 	margin: 10px;
+	cursor: pointer;
+	width: 100%;
+	bottom: 0;
+}
+
+.reaction img {
+	bottom: 0;
+}
+
+.reaction .replies {
+	font-family: "helvetica";
+	font-size: 10px;
+	text-transform: uppercase;
+	border: 1px solid black;
+	display: inline-block;
+	margin: 10px;
+	width: fit-content;
+	padding: 5px;
+	position: absolute;
 	cursor: pointer;
 }
 
-.reaction .loveBtn.disabled {
-	pointer-events: none;
-	cursor: none;
+.reaction .reply {
+	width: 500px;
+	position: relative;
+	background: red;
 }
 
 /*# sourceMappingURL=main.css.map */

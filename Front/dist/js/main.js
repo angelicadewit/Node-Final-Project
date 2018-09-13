@@ -12,8 +12,8 @@ var loveFilter = document.querySelector(".love");
 var familyFilter = document.querySelector(".family");
 var schoolFilter = document.querySelector(".school");
 var miscFilter = document.querySelector(".misc");
-var loveBtn = document.querySelector(".loveBtn");
-var numberOfLoveSpan = document.querySelector(".loveReactions");
+// let loveBtn = document.querySelector(`.loveBtn`)
+// let numberOfLoveSpan = document.querySelector(`.loveReactions`)
 
 var localURL = "http://localhost:1337/letters";
 var liveURL = "http://206.189.78.79:1337";
@@ -55,6 +55,20 @@ axios.get("http://localhost:1337/letters").then(function (response) {
 //     }
 // }
 
+var showingReplies = function showingReplies() {
+
+    var repliesDiv = document.querySelectorAll(".replies");
+
+    repliesDiv.forEach(function (reply) {
+        var serverReplyDiv = document.createElement('div');
+
+        serverReplyDiv.classList.add("reply");
+
+        serverReplyDiv.style.left = reply.getBoundingClientRect().right + window.scrollX + "px";
+        serverReplyDiv.style.top = reply.getBoundingClientRect().top + window.scrollY + "px";
+        reply.appendChild(serverReplyDiv);
+    });
+};
 
 var newLetterOnPage = function newLetterOnPage(letters) {
     if (letters.data.length === 0) {
@@ -65,7 +79,8 @@ var newLetterOnPage = function newLetterOnPage(letters) {
 
         letters.data.forEach(function (letter) {
             var newLetterListItem = document.createElement("li");
-            // let newLetterDiv = document.createElement(`div`)
+
+            var newLetterDiv = document.createElement("div");
             var letterLabelDiv = document.createElement("div");
             var reactionsDiv = document.createElement("div");
 
@@ -78,7 +93,7 @@ var newLetterOnPage = function newLetterOnPage(letters) {
             var numberOfSadSpan = document.createElement("span");
             var sadBtn = document.createElement("img");
 
-            var repliesSpan = document.createElement("span");
+            var repliesDiv = document.createElement("div");
             // let repliesSpan = document.createElement(`span`)
 
             numberOfLoveSpan.textContent = letter.love;
@@ -92,9 +107,6 @@ var newLetterOnPage = function newLetterOnPage(letters) {
             numberOfSadSpan.textContent = letter.sad;
             sadBtn.src = "../dist/img/56-2.png";
             numberOfSadSpan.classList.add("sadReactions");
-
-            repliesSpan.textContent = letter.replies.length;
-            sadBtn.src = "../dist/img/56-2.png";
 
             reactionsDiv.classList.add("reaction");
 
@@ -130,7 +142,12 @@ var newLetterOnPage = function newLetterOnPage(letters) {
 
             letterLabelDiv.textContent = letter.label;
 
-            newLetterListItem.innerHTML = "<p>" + letter.message + ".</p> <p class=\"salutations\">Love, " + letter.username + "</p>";
+            repliesDiv.classList.add("replies");
+            repliesDiv.addEventListener("click", showingReplies);
+
+            repliesDiv.textContent = letter.replies.length + " replies";
+
+            newLetterDiv.innerHTML = "<p>" + letter.message + ".</p> <p class=\"salutations\">Love, " + letter.username + "</p>";
 
             reactionsDiv.appendChild(numberOfLoveSpan);
             reactionsDiv.appendChild(loveBtn);
@@ -141,8 +158,12 @@ var newLetterOnPage = function newLetterOnPage(letters) {
             reactionsDiv.appendChild(numberOfSadSpan);
             reactionsDiv.appendChild(sadBtn);
 
+            reactionsDiv.appendChild(repliesDiv);
+
+            reactionsDiv.appendChild(letterLabelDiv);
+
+            newLetterListItem.appendChild(newLetterDiv);
             newLetterListItem.appendChild(reactionsDiv);
-            newLetterListItem.appendChild(letterLabelDiv);
 
             letterUL.appendChild(newLetterListItem);
         });

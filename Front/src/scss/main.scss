@@ -204,6 +204,11 @@ h1{
 	&.misc{
 		background: plum;
 	}
+
+	&.replies{
+		position: relative;
+
+	}
 }
 
 .salutations{
@@ -215,20 +220,34 @@ h1{
 }
 
 .reaction{
-	bottom: 0;
-	left: 0;
 	display: inline-block;
-	position: absolute;
+	// position: relative;
 	margin: 10px;
 	cursor: pointer;
+	width: 100%;
+	bottom: 0;
 
-	.loveBtn{
-
-		&.disabled{
-			pointer-events: none;
-			cursor: none;
-		}
+	img{
+		bottom: 0;
 	}
 
+	.replies{
+		font-family: "helvetica";
+		font-size: 10px;
+		text-transform: uppercase;
+		border: 1px solid black;
+		display: inline-block;
+		margin: 10px;
+		width: fit-content; 
+		padding: 5px;
+		position: absolute;
+		cursor: pointer;	
+	}
+
+	.reply{
+		width: 500px;
+		position: relative;
+		background: red;
+	}
 	
 }
