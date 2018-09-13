@@ -78,6 +78,7 @@ var newLetterOnPage = function newLetterOnPage(letters) {
             var newLetterDiv = document.createElement("div");
             var letterLabelDiv = document.createElement("div");
             var reactionsDiv = document.createElement("div");
+            var reactionsBtnDiv = document.createElement("div");
 
             var numberOfLoveSpan = document.createElement("span");
             var loveBtn = document.createElement("img");
@@ -103,6 +104,7 @@ var newLetterOnPage = function newLetterOnPage(letters) {
             sadBtn.src = "dist/img/56-2.png";
             numberOfSadSpan.classList.add("sadReactions");
 
+            reactionsBtnDiv.classList.add("reactionBtn");
             reactionsDiv.classList.add("reaction");
             newLetterDiv.classList.add("letter");
 
@@ -145,18 +147,18 @@ var newLetterOnPage = function newLetterOnPage(letters) {
 
             newLetterDiv.innerHTML = "<p>" + letter.message + ".</p> <p class=\"salutations\">Love, " + letter.username + "</p>";
 
-            reactionsDiv.appendChild(numberOfLoveSpan);
-            reactionsDiv.appendChild(loveBtn);
-
-            reactionsDiv.appendChild(numberOfSurpriseSpan);
-            reactionsDiv.appendChild(surpriseBtn);
-
-            reactionsDiv.appendChild(numberOfSadSpan);
-            reactionsDiv.appendChild(sadBtn);
-
-            // reactionsDiv.appendChild(repliesDiv)
-
             reactionsDiv.appendChild(letterLabelDiv);
+
+            reactionsBtnDiv.appendChild(numberOfLoveSpan);
+            reactionsBtnDiv.appendChild(loveBtn);
+
+            reactionsBtnDiv.appendChild(numberOfSurpriseSpan);
+            reactionsBtnDiv.appendChild(surpriseBtn);
+
+            reactionsBtnDiv.appendChild(numberOfSadSpan);
+            reactionsBtnDiv.appendChild(sadBtn);
+
+            reactionsDiv.appendChild(reactionsBtnDiv);
 
             newLetterListItem.appendChild(newLetterDiv);
             newLetterListItem.appendChild(reactionsDiv);

@@ -84,7 +84,7 @@ body {
 	margin: 20px;
 }
 
-@media only screen and (min-width: 960px) {
+@media only screen and (min-width: 640px) {
 	.content {
 		display: flex;
 	}
@@ -94,24 +94,33 @@ h1 {
 	font-size: 3em;
 }
 
-@media only screen and (min-width: 960px) {
+@media only screen and (min-width: 900px) {
 	.message-inputs {
 		position: fixed;
 		top: 3em;
+		width: 20%;
 	}
 }
 
 @media only screen and (min-width: 640px) {
 	.letters {
-		column-count: 2;
+		width: 100%;
 		margin-left: 30px;
 	}
 }
 
-@media only screen and (min-width: 960px) {
+@media only screen and (min-width: 900px) {
+	.letters {
+		column-count: 2;
+		width: 75%;
+		margin-left: auto;
+	}
+}
+
+@media only screen and (min-width: 1200px) {
 	.letters {
 		column-count: 3;
-		width: 80%;
+		width: 85%;
 		margin-left: auto;
 	}
 }
@@ -129,7 +138,7 @@ h1 {
 	vertical-align: top;
 }
 
-@media only screen and (min-width: 640px) {
+@media only screen and (min-width: 900px) {
 	.letters li {
 		max-width: 768px;
 		column-gap: 1.5em;
@@ -143,9 +152,9 @@ h1 {
 	}
 }
 
-@media only screen and (min-width: 960px) {
+@media only screen and (min-width: 900px) {
 	.letters li p {
-		width: 80%;
+		width: 70%;
 	}
 }
 
@@ -178,22 +187,37 @@ h1 {
 
 .label {
 	font-family: "helvetica";
-	font-size: 10px;
+	font-size: 20px;
 	text-transform: uppercase;
 	border: 1px solid black;
 	display: inline-block;
-	margin: 10px;
-	width: fit-content;
-	padding: 5px;
-	position: absolute;
+	text-align: center;
+	padding: 10px 20px;
+	display: inline;
 	cursor: pointer;
-	bottom: 0;
-	right: 0;
+}
+
+@media only screen and (min-width: 640px) {
+	.label {
+		align-self: flex-end;
+	}
+}
+
+@media only screen and (min-width: 900px) {
+	.label {
+		font-size: 16px;
+	}
 }
 
 .label.side {
-	position: relative;
-	margin: 2px;
+	margin: 5px;
+}
+
+@media only screen and (min-width: 900px) {
+	.label.side {
+		position: relative;
+		width: 100%;
+	}
 }
 
 .label.all {
@@ -244,10 +268,15 @@ h1 {
 	margin-bottom: auto;
 }
 
-@media only screen and (min-width: 640px) {
+.reaction {
+	display: flex;
+	justify-content: space-between;
+}
+
+@media only screen and (min-width: 900px) {
 	.reaction {
 		display: inline-block;
-		margin: 20px;
+		margin: 40px;
 		cursor: pointer;
 		width: 100%;
 		bottom: 0;
@@ -257,6 +286,23 @@ h1 {
 		width: 60px;
 		border-left: 1px solid black;
 		padding: 0px 10px;
+	}
+}
+
+.reactionBtn {
+	margin-left: auto;
+}
+
+@media only screen and (min-width: 640px) {
+	.reactionBtn {
+		display: inline;
+		bottom: 0;
+	}
+}
+
+@media only screen and (min-width: 900px) {
+	.reactionBtn {
+		position: absolute;
 	}
 }
 

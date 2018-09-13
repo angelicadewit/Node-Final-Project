@@ -18,7 +18,8 @@ TABLE OF CONTENTS:
 @import url('https://fonts.googleapis.com/css?family=Rouge+Script|Varela+Round');
 
 $tablet-breakpoint: 640px;
-$desktop-breakpoint: 960px;
+$desktop-breakpoint: 900px;
+$bigger-desktop-breakpoint: 1200px;
 
 
 @mixin tablet{
@@ -29,6 +30,12 @@ $desktop-breakpoint: 960px;
 
 @mixin desktop{
 	@media only screen and (min-width: $desktop-breakpoint){
+		@content;
+	}
+}
+
+@mixin bigger-desktop{
+	@media only screen and (min-width: $bigger-desktop-breakpoint){
 		@content;
 	}
 }
@@ -54,7 +61,8 @@ body {
 
 .content{
 	margin: 20px;
-	@include desktop{
+
+	@include tablet{
 		display: flex;
 	}
 }
@@ -67,22 +75,26 @@ h1{
 	@include desktop{
 		position: fixed;
 		top: 3em; 
+		width: 20%;
 	}
 }
 
 .letters{
 	@include tablet{
-		// display: flex;
-		// flex-wrap: wrap;
-		// justify-content: space-between;
-		// float: left;
-		column-count: 2;
+		width: 100%;
 		margin-left: 30px;
 	}
 	@include desktop{
 		// justify-content: flex-start;
+		column-count: 2;
+		width: 75%;
+		margin-left: auto;
+	}
+
+	@include bigger-desktop{
+		// justify-content: flex-start;
 		column-count: 3;
-		width: 80%;
+		width: 85%;
 		margin-left: auto;
 	}
 }
@@ -101,9 +113,7 @@ h1{
 	vertical-align: top;
 
 
-
-
-	@include tablet{
+	@include desktop{
 		max-width: 768px;
 		column-gap: 1.5em;
 		font-size: 1.25em;
@@ -117,14 +127,10 @@ h1{
 	}
 
 	p{
-
 		@include desktop{
-			width: 80%;
+			width: 70%;
 		}
 	}
-	// @include desktop{
-	// 	// width: 31%;
-	// }
 }
 
 .letterDiv{
@@ -155,24 +161,30 @@ h1{
 
 .label {
 	font-family: "helvetica";
-	font-size: 10px;
+	font-size: 20px;
 	text-transform: uppercase;
 	border: 1px solid black;
 	display: inline-block;
-	margin: 10px;
-	width: fit-content; 
-	padding: 5px;
-	position: absolute;
+	text-align: center;
+	padding: 10px 20px;
+	display: inline;
 	cursor: pointer;
 
-	// @include tablet{
-		bottom: 0;
-		right: 0;
-	// }
+	@include tablet{
+		align-self: flex-end;
+	}
+
+	@include desktop{
+		font-size: 16px;
+	}
 
 	&.side{
-		position: relative;
-		margin: 2px;
+		margin: 5px;
+
+		@include desktop{
+			position: relative;
+			width: 100%; 
+		}
 	}
 
 	&.all{
@@ -225,11 +237,13 @@ h1{
 }
 
 .reaction{
+
+	display: flex;
+	justify-content: space-between;
 	
-	
-	@include tablet{
+	@include desktop{
 		display: inline-block;
-		margin: 20px;
+		margin: 40px;
 		cursor: pointer;
 		width: 100%;
 		bottom: 0;
@@ -240,4 +254,17 @@ h1{
 		border-left: 1px solid black;
 		padding: 0px 10px;
 	}
+}
+
+	.reactionBtn{
+		margin-left: auto;
+
+		@include tablet{
+			display: inline;
+			bottom: 0;
+		}
+
+		@include desktop{
+			position: absolute;
+		}
 }
