@@ -74,7 +74,7 @@ table {
 }
 
 body {
-	background: #ccc;
+	background: teal;
 	font-family: sans-serif;
 	transition: .2s;
 }
@@ -118,7 +118,7 @@ h1 {
 
 .letters li {
 	font-size: 1.25em;
-	background: #ddd;
+	background: #b5e9e6;
 	display: inline-block;
 	margin: 10px 0px;
 	padding: 20px;
@@ -134,12 +134,6 @@ h1 {
 		max-width: 768px;
 		column-gap: 1.5em;
 		font-size: 1.25em;
-		background: #ddd;
-		margin: 10px 0px;
-		padding: 20px;
-		font-family: "Varela Round";
-		position: relative;
-		line-height: 1.2em;
 		break-inside: avoid;
 		page-break-inside: avoid;
 	}
@@ -201,6 +195,16 @@ h1 {
 
 .label.replies {
 	position: relative;
+}
+
+.refresh {
+	display: inline-block;
+	border: 3px solid black;
+	padding: 10px 10px;
+	background: seagreen;
+	margin-bottom: 30px;
+	cursor: pointer;
+	text-transform: uppercase;
 }
 
 .salutations {

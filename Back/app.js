@@ -16,31 +16,52 @@ let idCounter = 0
 
 
 
+setInterval(function() {
+    // hourly maintenance task
+    let currentTime = new Date().getTime()
+    console.log("purging old letters", letters.length)
+
+    letters = letters.filter(function(letter, i){
+        if (letter.timestamp > currentTime - 86400){
+            return true
+        }
+        return false
+    })
+
+    console.log("purged old letters", letters.length)
+    
+}, 60*60*1000  )
+
+
+
+
 app.get('/', function(req, res){
     res.send(`Welcome to them letters API`)
 })
 
 app.post('/letters', function(req, res){
-    // res.send(`This is how you add letter`)
     console.log(`letters array:`, letters)
+    console.log(`incoming letter data:`, req.body)
 
     let newLetter = {
         id: idCounter++,
+        timestamp: new Date().getTime(),
         username: req.body.username,
         label: req.body.label,
         message: req.body.message,
         love: 0,
         sad: 0,
         surprise: 0,
-        // reactions: [{loves: 0, sad: 0, surprises: 0}]
-        replies: []
+        replies: [],
+        
     }
 
     letters.unshift(newLetter)
 
-    res.send([letters])
+    res.send(letters)
 
 })
+
 
 // app.post(`/letters/:id/reactions/:???`, function(req, res){
 // idk
@@ -77,20 +98,20 @@ app.post(`/letters/:id/sad`, function(req, res){
     res.send(String(foundLetterIDInArray.sad));
 })
 
-app.post(`/letters/:id/replies`, function(req, res){
-    console.log(req.params.id)
+// app.post(`/letters/:id/replies`, function(req, res){
+//     console.log(req.params.id)
 
-    let foundRepliesID = req.params.id
+//     let foundRepliesID = req.params.id
 
-    let foundRepliesIDInArray = letters.find(function(letter) {
-        return letter.id == foundLetterID
-    });
+//     let foundRepliesIDInArray = letters.find(function(letter) {
+//         return letter.id == foundLetterID
+//     });
 
     
-    foundLetterIDInArray
+//     foundLetterIDInArray
 
-    res.send(String(foundLetterIDInArray.sad));
-})
+//     res.send(String(foundLetterIDInArray.sad));
+// })
 
 app.post(`/letters/:id/surprise`, function(req, res){
     console.log(req.params.id)

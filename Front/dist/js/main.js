@@ -12,6 +12,7 @@ var loveFilter = document.querySelector(".love");
 var familyFilter = document.querySelector(".family");
 var schoolFilter = document.querySelector(".school");
 var miscFilter = document.querySelector(".misc");
+var refreshBtn = document.querySelector(".refresh");
 // let loveBtn = document.querySelector(`.loveBtn`)
 // let numberOfLoveSpan = document.querySelector(`.loveReactions`)
 
@@ -48,12 +49,6 @@ axios.get("http://localhost:1337/letters").then(function (response) {
     letterUL.innerHTML = "";
     newLetterOnPage(response);
 });
-
-// let addingAReaction = function(reaction){
-//     if (reaction.data != "0"){
-//         loveBtn.classList.add(`disabled`)
-//     }
-// }
 
 var showingReplies = function showingReplies() {
 
@@ -93,7 +88,7 @@ var newLetterOnPage = function newLetterOnPage(letters) {
             var numberOfSadSpan = document.createElement("span");
             var sadBtn = document.createElement("img");
 
-            var repliesDiv = document.createElement("div");
+            // let repliesDiv = document.createElement(`div`)
             // let repliesSpan = document.createElement(`span`)
 
             numberOfLoveSpan.textContent = letter.love;
@@ -142,10 +137,10 @@ var newLetterOnPage = function newLetterOnPage(letters) {
 
             letterLabelDiv.textContent = letter.label;
 
-            repliesDiv.classList.add("replies");
-            repliesDiv.addEventListener("click", showingReplies);
+            // repliesDiv.classList.add ("replies")
+            // repliesDiv.addEventListener("click", showingReplies)
 
-            repliesDiv.textContent = letter.replies.length + " replies";
+            // repliesDiv.textContent = `${letter.replies.length} replies`
 
             newLetterDiv.innerHTML = "<p>" + letter.message + ".</p> <p class=\"salutations\">Love, " + letter.username + "</p>";
 
@@ -158,7 +153,7 @@ var newLetterOnPage = function newLetterOnPage(letters) {
             reactionsDiv.appendChild(numberOfSadSpan);
             reactionsDiv.appendChild(sadBtn);
 
-            reactionsDiv.appendChild(repliesDiv);
+            // reactionsDiv.appendChild(repliesDiv)
 
             reactionsDiv.appendChild(letterLabelDiv);
 
