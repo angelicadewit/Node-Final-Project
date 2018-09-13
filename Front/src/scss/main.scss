@@ -221,4 +221,14 @@ h1{
 	position: absolute;
 	margin: 10px;
 	cursor: pointer;
+
+	.loveBtn{
+
+		&.disabled{
+			pointer-events: none;
+			cursor: none;
+		}
+	}
+
+	
 }

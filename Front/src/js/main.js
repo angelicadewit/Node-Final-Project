@@ -10,6 +10,8 @@ let loveFilter = document.querySelector(`.love`)
 let familyFilter = document.querySelector(`.family`)
 let schoolFilter = document.querySelector(`.school`)
 let miscFilter = document.querySelector(`.misc`)
+let loveBtn = document.querySelector(`.loveBtn`)
+let numberOfLoveSpan = document.querySelector(`.loveReactions`)
 
 let localURL = `http://localhost:1337/letters`
 let liveURL = `http://206.189.78.79:1337`
@@ -49,11 +51,13 @@ axios.get("http://localhost:1337/letters").then(function (response) {
     newLetterOnPage(response)
 });
 
-axios.get("http://localhost:1337/letters/").then(function (response) {
-    console.log(response)
-    letterUL.innerHTML = ``
-    newLetterOnPage(response)
-});
+
+// let addingAReaction = function(reaction){
+//     if (reaction.data != "0"){
+//         loveBtn.classList.add(`disabled`)
+//     }
+// }
+
 
 
 let newLetterOnPage = function(letters){
@@ -68,23 +72,64 @@ let newLetterOnPage = function(letters){
             // let newLetterDiv = document.createElement(`div`)
             let letterLabelDiv = document.createElement(`div`)
             let reactionsDiv = document.createElement(`div`)
-            let numberOfLovesSpan = document.createElement(`span`)
-            let lovesBtn = document.createElement(`img`)
 
-            numberOfLovesSpan.textContent = letter.loves
-            lovesBtn.src = "../dist/img/56-3.png";
+            let numberOfLoveSpan = document.createElement(`span`)
+            let loveBtn = document.createElement(`img`)
+
+            let numberOfSurpriseSpan = document.createElement(`span`)
+            let surpriseBtn = document.createElement(`img`)
+
+            let numberOfSadSpan = document.createElement(`span`)
+            let sadBtn = document.createElement(`img`)
+
+            let repliesSpan = document.createElement(`span`)
+            // let repliesSpan = document.createElement(`span`)
+
+            numberOfLoveSpan.textContent = letter.love
+            numberOfLoveSpan.classList.add(`loveReactions`)
+            loveBtn.src = "../dist/img/56-3.png"
+
+            
+
+            numberOfSurpriseSpan.textContent = letter.surprise
+            surpriseBtn.src = "../dist/img/56-1.png"
+            numberOfSurpriseSpan.classList.add(`surpriseReactions`)
+
+            numberOfSadSpan.textContent = letter.sad
+            sadBtn.src = "../dist/img/56-2.png"
+            numberOfSadSpan.classList.add(`sadReactions`)
+
+            repliesSpan.textContent = letter.replies.length
+            sadBtn.src = "../dist/img/56-2.png"
+
             reactionsDiv.classList.add(`reaction`)
 
-            lovesBtn.addEventListener("click", function() {
-                // /letters/:id/loves
-                axios.post(localURL + "/" + letter.id + "/loves")
+
+            loveBtn.addEventListener("click", function() {
+                axios.post(localURL + "/" + letter.id + "/love")
                     .then((response) => {
-                        numberOfLovesSpan.textContent = ``
-                        numberOfLovesSpan.textContent = response.data
+                        // addingAReaction(response)
+                        numberOfLoveSpan.textContent = ``
+                        numberOfLoveSpan.textContent = response.data
+                    })
+            })
+
+            surpriseBtn.addEventListener("click", function() {
+                axios.post(localURL + "/" + letter.id + "/surprise")
+                    .then((response) => {
+                        numberOfSurpriseSpan.textContent = ``
+                        numberOfSurpriseSpan.textContent = response.data
+                    })
+            })
+
+            sadBtn.addEventListener("click", function() {
+                axios.post(localURL + "/" + letter.id + "/sad")
+                    .then((response) => {
+                        numberOfSadSpan.textContent = ``
+                        numberOfSadSpan.textContent = response.data
                     })
             })
             
-            // newLetterListItem.classList.add(`letterDiv`)
             letterLabelDiv.classList.add ("label", letter.label)
             letterLabelDiv.addEventListener("click", function() {
                 axios.get(`http://localhost:1337/letters/type/${letter.label}`).then(function (response) {
@@ -97,15 +142,19 @@ let newLetterOnPage = function(letters){
             
             newLetterListItem.innerHTML = `<p>${letter.message}.</p> <p class="salutations">Love, ${letter.username}</p>`
             
-            reactionsDiv.appendChild(numberOfLovesSpan)
-            reactionsDiv.appendChild(lovesBtn)
+            reactionsDiv.appendChild(numberOfLoveSpan)
+            reactionsDiv.appendChild(loveBtn)
 
+            reactionsDiv.appendChild(numberOfSurpriseSpan)
+            reactionsDiv.appendChild(surpriseBtn)
+
+            reactionsDiv.appendChild(numberOfSadSpan)
+            reactionsDiv.appendChild(sadBtn)
             
             newLetterListItem.appendChild(reactionsDiv)
-
             newLetterListItem.appendChild(letterLabelDiv)
 
-            // newLetterListItem.appendChild(newLetterDiv)
+
             letterUL.appendChild(newLetterListItem)
         })
     }

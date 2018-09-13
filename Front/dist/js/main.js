@@ -12,6 +12,8 @@ var loveFilter = document.querySelector(".love");
 var familyFilter = document.querySelector(".family");
 var schoolFilter = document.querySelector(".school");
 var miscFilter = document.querySelector(".misc");
+var loveBtn = document.querySelector(".loveBtn");
+var numberOfLoveSpan = document.querySelector(".loveReactions");
 
 var localURL = "http://localhost:1337/letters";
 var liveURL = "http://206.189.78.79:1337";
@@ -47,11 +49,12 @@ axios.get("http://localhost:1337/letters").then(function (response) {
     newLetterOnPage(response);
 });
 
-axios.get("http://localhost:1337/letters/").then(function (response) {
-    console.log(response);
-    letterUL.innerHTML = "";
-    newLetterOnPage(response);
-});
+// let addingAReaction = function(reaction){
+//     if (reaction.data != "0"){
+//         loveBtn.classList.add(`disabled`)
+//     }
+// }
+
 
 var newLetterOnPage = function newLetterOnPage(letters) {
     if (letters.data.length === 0) {
@@ -65,22 +68,58 @@ var newLetterOnPage = function newLetterOnPage(letters) {
             // let newLetterDiv = document.createElement(`div`)
             var letterLabelDiv = document.createElement("div");
             var reactionsDiv = document.createElement("div");
-            var numberOfLovesSpan = document.createElement("span");
-            var lovesBtn = document.createElement("img");
 
-            numberOfLovesSpan.textContent = letter.loves;
-            lovesBtn.src = "../dist/img/56-3.png";
+            var numberOfLoveSpan = document.createElement("span");
+            var loveBtn = document.createElement("img");
+
+            var numberOfSurpriseSpan = document.createElement("span");
+            var surpriseBtn = document.createElement("img");
+
+            var numberOfSadSpan = document.createElement("span");
+            var sadBtn = document.createElement("img");
+
+            var repliesSpan = document.createElement("span");
+            // let repliesSpan = document.createElement(`span`)
+
+            numberOfLoveSpan.textContent = letter.love;
+            numberOfLoveSpan.classList.add("loveReactions");
+            loveBtn.src = "../dist/img/56-3.png";
+
+            numberOfSurpriseSpan.textContent = letter.surprise;
+            surpriseBtn.src = "../dist/img/56-1.png";
+            numberOfSurpriseSpan.classList.add("surpriseReactions");
+
+            numberOfSadSpan.textContent = letter.sad;
+            sadBtn.src = "../dist/img/56-2.png";
+            numberOfSadSpan.classList.add("sadReactions");
+
+            repliesSpan.textContent = letter.replies.length;
+            sadBtn.src = "../dist/img/56-2.png";
+
             reactionsDiv.classList.add("reaction");
 
-            lovesBtn.addEventListener("click", function () {
-                // /letters/:id/loves
-                axios.post(localURL + "/" + letter.id + "/loves").then(function (response) {
-                    numberOfLovesSpan.textContent = "";
-                    numberOfLovesSpan.textContent = response.data;
+            loveBtn.addEventListener("click", function () {
+                axios.post(localURL + "/" + letter.id + "/love").then(function (response) {
+                    // addingAReaction(response)
+                    numberOfLoveSpan.textContent = "";
+                    numberOfLoveSpan.textContent = response.data;
                 });
             });
 
-            // newLetterListItem.classList.add(`letterDiv`)
+            surpriseBtn.addEventListener("click", function () {
+                axios.post(localURL + "/" + letter.id + "/surprise").then(function (response) {
+                    numberOfSurpriseSpan.textContent = "";
+                    numberOfSurpriseSpan.textContent = response.data;
+                });
+            });
+
+            sadBtn.addEventListener("click", function () {
+                axios.post(localURL + "/" + letter.id + "/sad").then(function (response) {
+                    numberOfSadSpan.textContent = "";
+                    numberOfSadSpan.textContent = response.data;
+                });
+            });
+
             letterLabelDiv.classList.add("label", letter.label);
             letterLabelDiv.addEventListener("click", function () {
                 axios.get("http://localhost:1337/letters/type/" + letter.label).then(function (response) {
@@ -93,14 +132,18 @@ var newLetterOnPage = function newLetterOnPage(letters) {
 
             newLetterListItem.innerHTML = "<p>" + letter.message + ".</p> <p class=\"salutations\">Love, " + letter.username + "</p>";
 
-            reactionsDiv.appendChild(numberOfLovesSpan);
-            reactionsDiv.appendChild(lovesBtn);
+            reactionsDiv.appendChild(numberOfLoveSpan);
+            reactionsDiv.appendChild(loveBtn);
+
+            reactionsDiv.appendChild(numberOfSurpriseSpan);
+            reactionsDiv.appendChild(surpriseBtn);
+
+            reactionsDiv.appendChild(numberOfSadSpan);
+            reactionsDiv.appendChild(sadBtn);
 
             newLetterListItem.appendChild(reactionsDiv);
-
             newLetterListItem.appendChild(letterLabelDiv);
 
-            // newLetterListItem.appendChild(newLetterDiv)
             letterUL.appendChild(newLetterListItem);
         });
     }

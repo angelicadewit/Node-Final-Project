@@ -29,9 +29,10 @@ app.post('/letters', function(req, res){
         username: req.body.username,
         label: req.body.label,
         message: req.body.message,
-        loves: 0,
-        angries: 0,
-        surprises: 0,
+        love: 0,
+        sad: 0,
+        surprise: 0,
+        // reactions: [{loves: 0, sad: 0, surprises: 0}]
         replies: []
     }
 
@@ -41,41 +42,59 @@ app.post('/letters', function(req, res){
 
 })
 
-
-// app.get(`/letters/:id`, function(req, res){
-//     res.send(letters.filter(function(){
-
-//     })
+// app.post(`/letters/:id/reactions/:???`, function(req, res){
+// idk
 // })
 
-// app.get(`/letter/:id`, function(req, res){
-//     res.send(letters.id)
-// })
 
-app.post(`/letters/:id/loves`, function(req, res){
+app.post(`/letters/:id/love`, function(req, res){
     console.log(req.params.id)
 
     let foundLetterID = req.params.id
 
     let foundLetterIDInArray = letters.find(function(letter) {
-        return letter.id == foundLetterID
+        return letter.id = foundLetterID
     });
 
     
-    foundLetterIDInArray.loves++
+    foundLetterIDInArray.love++
 
-    res.send(String(foundLetterIDInArray.loves));
+    res.send(String(foundLetterIDInArray.love));
+})
+
+app.post(`/letters/:id/sad`, function(req, res){
+    console.log(req.params.id)
+
+    let foundLetterID = req.params.id
+
+    let foundLetterIDInArray = letters.find(function(letter) {
+        return letter.id = foundLetterID
+    });
+
+    
+    foundLetterIDInArray.sad++
+
+    res.send(String(foundLetterIDInArray.sad));
+})
+
+app.post(`/letters/:id/surprise`, function(req, res){
+    console.log(req.params.id)
+
+    let foundLetterID = req.params.id
+
+    let foundLetterIDInArray = letters.find(function(letter) {
+        return letter.id = foundLetterID
+    });
+
+    
+    foundLetterIDInArray.surprise++
+
+    res.send(String(foundLetterIDInArray.surprise));
 })
 
 app.get(`/letters`, function(req, res){
     res.send(letters)
 })
-
-// app.get(`/letters/:id/loves`, function(req, res){
-//     let foundLetterID = req.params.id
-//     res.send(foundLetterID.love)
-// })
-
 
 
 app.get(`/letters/type/:label`, function(req, res){

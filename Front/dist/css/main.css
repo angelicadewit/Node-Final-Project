@@ -216,4 +216,9 @@ h1 {
 	cursor: pointer;
 }
 
+.reaction .loveBtn.disabled {
+	pointer-events: none;
+	cursor: none;
+}
+
 /*# sourceMappingURL=main.css.map */
