@@ -71,6 +71,7 @@ let newLetterOnPage = function(letters){
             let numberOfLovesSpan = document.createElement(`span`)
             let lovesBtn = document.createElement(`img`)
 
+            numberOfLovesSpan.textContent = letter.loves
             lovesBtn.src = "../dist/img/56-3.png";
             reactionsDiv.classList.add(`reaction`)
 

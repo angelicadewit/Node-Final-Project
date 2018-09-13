@@ -68,6 +68,7 @@ var newLetterOnPage = function newLetterOnPage(letters) {
             var numberOfLovesSpan = document.createElement("span");
             var lovesBtn = document.createElement("img");
 
+            numberOfLovesSpan.textContent = letter.loves;
             lovesBtn.src = "../dist/img/56-3.png";
             reactionsDiv.classList.add("reaction");
 
