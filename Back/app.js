@@ -14,6 +14,8 @@ let letters = []
 let idCounter = 0
 
 
+
+
 app.get('/', function(req, res){
     res.send(`Welcome to them letters API`)
 })
@@ -50,27 +52,33 @@ app.post('/letters', function(req, res){
 //     res.send(letters.id)
 // })
 
-app.post(`/letters/:id/love`, function(req, res){
+app.post(`/letters/:id/loves`, function(req, res){
     console.log(req.params.id)
 
     let foundLetterID = req.params.id
 
-    let foundLetterIDInArray = letters.find(function(foundLetterID) {
-        lovesCounter++
+    let foundLetterIDInArray = letters.find(function(letter) {
+        return letter.id == foundLetterID
     });
-
-
-    // ++ it's loves prop
-
-    // send 
-    
-    res.send()
-
+    if (foundLetterIDInArray) {
+        foundLetterIDInArray.loves++
+        res.sendStatus(200).send(foundLetterIDInArray.loves)
+        console.log(foundLetterIDInArray.loves)
+    } else {
+        res.sendStatus(404).send("AAAAAAHHH")
+    }
 })
 
 app.get(`/letters`, function(req, res){
     res.send(letters)
 })
+
+app.get(`/letters/:id/loves`, function(req, res){
+    let foundLetterID = req.params.id
+    res.send(letter.love)
+
+})
+
 
 app.get(`/letters/type/:label`, function(req, res){
 

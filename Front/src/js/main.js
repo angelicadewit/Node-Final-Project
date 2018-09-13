@@ -49,6 +49,13 @@ axios.get("http://localhost:1337/letters").then(function (response) {
     newLetterOnPage(response)
 });
 
+axios.get("http://localhost:1337/letters/").then(function (response) {
+    console.log(response)
+    letterUL.innerHTML = ``
+    newLetterOnPage(response)
+});
+
+
 let newLetterOnPage = function(letters){
     if (letters.data.length === 0){
         letterUL.innerHTML += `<p>There are no letters available. Want to write something?</p>`
@@ -65,13 +72,14 @@ let newLetterOnPage = function(letters){
             let lovesBtn = document.createElement(`img`)
 
             lovesBtn.src = "../dist/img/56-3.png";
-            lovesBtn.classList.add(`reaction`)
+            reactionsDiv.classList.add(`reaction`)
 
             lovesBtn.addEventListener("click", function() {
                 // /letters/:id/loves
-                axios.post(localURL + "/" + letter.id + "/love")
+                axios.post(localURL + "/" + letter.id + "/loves")
                     .then((response) => {
-                        console.log(response)
+                        numberOfLovesSpan.textContent = ``
+                        numberOfLovesSpan.textContent = response.data
                     })
             })
             
