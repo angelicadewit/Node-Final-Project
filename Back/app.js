@@ -60,24 +60,22 @@ app.post(`/letters/:id/loves`, function(req, res){
     let foundLetterIDInArray = letters.find(function(letter) {
         return letter.id == foundLetterID
     });
-    if (foundLetterIDInArray) {
-        foundLetterIDInArray.loves++
-        res.sendStatus(200).send(foundLetterIDInArray.loves)
-        console.log(foundLetterIDInArray.loves)
-    } else {
-        res.sendStatus(404).send("AAAAAAHHH")
-    }
+
+    
+    foundLetterIDInArray.loves++
+
+    res.send(String(foundLetterIDInArray.loves));
 })
 
 app.get(`/letters`, function(req, res){
     res.send(letters)
 })
 
-app.get(`/letters/:id/loves`, function(req, res){
-    let foundLetterID = req.params.id
-    res.send(letter.love)
+// app.get(`/letters/:id/loves`, function(req, res){
+//     let foundLetterID = req.params.id
+//     res.send(foundLetterID.love)
+// })
 
-})
 
 
 app.get(`/letters/type/:label`, function(req, res){
