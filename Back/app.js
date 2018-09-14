@@ -19,18 +19,21 @@ let idCounter = 0
 setInterval(function() {
     // hourly maintenance task
     let currentTime = new Date().getTime()
+    // let actualTime = (currentTime - 86400000)
+
     console.log("purging old letters", letters.length)
 
     letters = letters.filter(function(letter, i){
-        if (letter.timestamp > currentTime - 86400){
+        if (letter.timestamp > currentTime - 86400000){
             return true
         }
         return false
     })
 
     console.log("purged old letters", letters.length)
+    // console.log (actualTime)
     
-}, 60*60*1000  )
+}, 60 * 60 * 1000 )
 
 
 
