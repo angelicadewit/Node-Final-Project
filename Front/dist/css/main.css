@@ -74,7 +74,7 @@ table {
 }
 
 body {
-	background: teal;
+	background: #b1dad5;
 	font-family: sans-serif;
 	transition: .2s;
 }
@@ -84,7 +84,7 @@ body {
 	margin: 20px;
 }
 
-@media only screen and (min-width: 640px) {
+@media only screen and (min-width: 740px) {
 	.content {
 		display: flex;
 	}
@@ -102,7 +102,11 @@ h1 {
 	}
 }
 
-@media only screen and (min-width: 640px) {
+.letters {
+	padding-top: 30px;
+}
+
+@media only screen and (min-width: 740px) {
 	.letters {
 		width: 100%;
 		margin-left: 30px;
@@ -120,14 +124,12 @@ h1 {
 @media only screen and (min-width: 1200px) {
 	.letters {
 		column-count: 3;
-		width: 85%;
-		margin-left: auto;
 	}
 }
 
 .letters li {
 	font-size: 1.25em;
-	background: #b5e9e6;
+	background: #DDF1EF;
 	display: inline-block;
 	margin: 10px 0px;
 	padding: 20px;
@@ -136,6 +138,27 @@ h1 {
 	line-height: 1.2em;
 	width: 100%;
 	vertical-align: top;
+	border: 2px solid black;
+}
+
+.letters li.work {
+	background: #c8ebdb;
+}
+
+.letters li.school {
+	background: #a2d4ff;
+}
+
+.letters li.love {
+	background: #eaadc1;
+}
+
+.letters li.family {
+	background: #ffd589;
+}
+
+.letters li.misc {
+	background: #f1d8f1;
 }
 
 @media only screen and (min-width: 900px) {
@@ -158,54 +181,28 @@ h1 {
 	}
 }
 
-.letterDiv {
-	font-size: 1.25em;
-	background: #ddd;
-	margin: 10px 0px;
-	padding: 20px;
-	font-family: "Varela Round";
-	position: relative;
-	line-height: 1.2em;
-	width: 500px;
-}
-
-@media only screen and (min-width: 640px) {
-	.letterDiv {
-		width: 100%;
-		height: 100%;
-		vertical-align: bottom;
-		overflow: auto;
-	}
-}
-
 .label-cluster {
 	display: flex;
 	margin: 20px 0px;
 	flex-wrap: wrap;
-	width: 150px;
 }
 
 .label {
 	font-family: "helvetica";
-	font-size: 20px;
+	font-size: 16px;
 	text-transform: uppercase;
 	border: 1px solid black;
-	display: inline-block;
 	text-align: center;
 	padding: 10px 20px;
-	display: inline;
 	cursor: pointer;
-}
-
-@media only screen and (min-width: 640px) {
-	.label {
-		align-self: flex-end;
-	}
+	align-self: flex-end;
 }
 
 @media only screen and (min-width: 900px) {
 	.label {
-		font-size: 16px;
+		width: fit-content;
+		padding: 5px;
+		font-size: 12px;
 	}
 }
 
@@ -216,20 +213,22 @@ h1 {
 @media only screen and (min-width: 900px) {
 	.label.side {
 		position: relative;
-		width: 100%;
+		width: 45%;
+		padding: 10px 20px;
+		font-size: 16px;
 	}
 }
 
 .label.all {
-	background: #48d1cc;
+	background: #4F958E;
 }
 
 .label.work {
-	background: greenyellow;
+	background: #72cca1;
 }
 
 .label.school {
-	background: #a2d4ff;
+	background: #53b0ff;
 }
 
 .label.love {
@@ -237,25 +236,22 @@ h1 {
 }
 
 .label.family {
-	background: orange;
+	background: #ffa400;
 }
 
 .label.misc {
 	background: plum;
 }
 
-.label.replies {
-	position: relative;
+.label.refresh {
+	background: #dcf1ef;
 }
 
-.refresh {
-	display: inline-block;
-	border: 3px solid black;
-	padding: 10px 10px;
-	background: seagreen;
-	margin-bottom: 30px;
-	cursor: pointer;
-	text-transform: uppercase;
+@media only screen and (min-width: 900px) {
+	.label.refresh {
+		position: relative;
+		width: 93%;
+	}
 }
 
 .salutations {
@@ -271,12 +267,13 @@ h1 {
 .reaction {
 	display: flex;
 	justify-content: space-between;
+	align-content: flex-end;
 }
 
 @media only screen and (min-width: 900px) {
 	.reaction {
 		display: inline-block;
-		margin: 40px;
+		margin: 15px 25px;
 		cursor: pointer;
 		width: 100%;
 		bottom: 0;
@@ -291,9 +288,10 @@ h1 {
 
 .reactionBtn {
 	margin-left: auto;
+	cursor: pointer;
 }
 
-@media only screen and (min-width: 640px) {
+@media only screen and (min-width: 740px) {
 	.reactionBtn {
 		display: inline;
 		bottom: 0;

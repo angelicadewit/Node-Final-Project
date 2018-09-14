@@ -102,6 +102,8 @@ let newLetterOnPage = function(letters){
             // let repliesDiv = document.createElement(`div`)
             // let repliesSpan = document.createElement(`span`)
 
+            newLetterListItem.classList.add (letter.label)
+
             numberOfLoveSpan.textContent = letter.love
             numberOfLoveSpan.classList.add(`loveReactions`)
             loveBtn.src = "dist/img/56-3.png"
@@ -175,7 +177,6 @@ let newLetterOnPage = function(letters){
             reactionsBtnDiv.appendChild(sadBtn)
 
             reactionsDiv.appendChild(reactionsBtnDiv)
-            
     
             newLetterListItem.appendChild(newLetterDiv)
             newLetterListItem.appendChild(reactionsDiv)

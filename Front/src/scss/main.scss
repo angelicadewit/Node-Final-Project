@@ -17,7 +17,7 @@ TABLE OF CONTENTS:
 @import 'reset';
 @import url('https://fonts.googleapis.com/css?family=Rouge+Script|Varela+Round');
 
-$tablet-breakpoint: 640px;
+$tablet-breakpoint: 740px;
 $desktop-breakpoint: 900px;
 $bigger-desktop-breakpoint: 1200px;
 
@@ -48,7 +48,7 @@ $bigger-desktop-breakpoint: 1200px;
 }
 
 body {
-	background: teal;
+	background: #b1dad5;
 	font-family: sans-serif;
 	transition: .2s;
 	
@@ -80,6 +80,8 @@ h1{
 }
 
 .letters{
+	padding-top: 30px;
+
 	@include tablet{
 		width: 100%;
 		margin-left: 30px;
@@ -94,15 +96,13 @@ h1{
 	@include bigger-desktop{
 		// justify-content: flex-start;
 		column-count: 3;
-		width: 85%;
-		margin-left: auto;
 	}
 }
 
 .letters li{
 
 	font-size: 1.25em;
-	background: rgb(181, 233, 230);
+	background: #DDF1EF;
 	display: inline-block;
 	margin: 10px 0px;
 	padding: 20px;
@@ -111,6 +111,28 @@ h1{
 	line-height: 1.2em;
 	width: 100%;
 	vertical-align: top;
+	border: 2px solid black;
+	
+	&.work{
+		background: #c8ebdb;
+	}
+
+	&.school{
+		background: #a2d4ff;	
+	}
+
+	&.love{
+		background: #eaadc1;
+	}
+
+	&.family{
+		background: #ffd589;
+	}
+
+	&.misc{
+		background: #f1d8f1
+	}
+
 
 
 	@include desktop{
@@ -133,49 +155,47 @@ h1{
 	}
 }
 
-.letterDiv{
-	font-size: 1.25em;
-	background: #ddd;
-	// display: inline-block;
-	margin: 10px 0px;
-	padding: 20px;
-	font-family: "Varela Round";
-	position: relative;
-	line-height: 1.2em;
-	width: 500px;
+// .letterDiv{
+// 	font-size: 1.25em;
+// 	background: #ddd;
+// 	// display: inline-block;
+// 	margin: 10px 0px;
+// 	padding: 20px;
+// 	font-family: "Varela Round";
+// 	position: relative;
+// 	line-height: 1.2em;
+// 	width: 500px;
 	
-	@include tablet{
-		width: 100%;
-		height: 100%;
-		vertical-align: bottom;
-		overflow: auto;
-	}
-}
+// 	@include tablet{
+// 		width: 100%;
+// 		height: 100%;
+// 		vertical-align: bottom;
+// 		overflow: auto;
+// 	}
+// }
 
 .label-cluster{
 	display: flex;
 	margin: 20px 0px;
 	flex-wrap: wrap;
-	width: 150px;
+
 }
 
 .label {
 	font-family: "helvetica";
-	font-size: 20px;
+	font-size: 16px;
 	text-transform: uppercase;
 	border: 1px solid black;
-	display: inline-block;
 	text-align: center;
 	padding: 10px 20px;
-	display: inline;
 	cursor: pointer;
+	align-self: flex-end;
 
-	@include tablet{
-		align-self: flex-end;
-	}
 
 	@include desktop{
-		font-size: 16px;
+		width: fit-content;
+		padding: 5px;
+		font-size: 12px;
 	}
 
 	&.side{
@@ -183,20 +203,22 @@ h1{
 
 		@include desktop{
 			position: relative;
-			width: 100%; 
+			width: 45%; 
+			padding: 10px 20px;
+			font-size: 16px;
 		}
 	}
 
 	&.all{
-		background: #48d1cc;
+		background: #4F958E;
 	}
 
 	&.work{
-		background: greenyellow;
+		background: #72cca1;
 	}
 
 	&.school{
-		background: #a2d4ff;	
+		background: #53b0ff;	
 	}
 
 	&.love{
@@ -204,27 +226,23 @@ h1{
 	}
 
 	&.family{
-		background: orange;
+		background: #ffa400;
 	}
 
 	&.misc{
 		background: plum;
 	}
 
-	&.replies{
-		position: relative;
+	&.refresh{
+		background: #dcf1ef;
+
+		@include desktop{
+			position: relative;
+			width: 93%;
+		}
 	}
 }
 
-.refresh{
-	display: inline-block;
-	border: 3px solid black;
-	padding: 10px 10px;
-	background: seagreen;
-	margin-bottom: 30px;
-	cursor: pointer;
-	text-transform: uppercase;
-}
 
 .salutations{
 	font-family: 'Rouge Script', cursive;
@@ -237,13 +255,13 @@ h1{
 }
 
 .reaction{
-
 	display: flex;
 	justify-content: space-between;
+	align-content: flex-end;
 	
 	@include desktop{
 		display: inline-block;
-		margin: 40px;
+		margin: 15px 25px;
 		cursor: pointer;
 		width: 100%;
 		bottom: 0;
@@ -256,15 +274,16 @@ h1{
 	}
 }
 
-	.reactionBtn{
-		margin-left: auto;
+.reactionBtn{
+	margin-left: auto;
+	cursor: pointer;
 
-		@include tablet{
-			display: inline;
-			bottom: 0;
-		}
+	@include tablet{
+		display: inline;
+		bottom: 0;
+	}
 
-		@include desktop{
-			position: absolute;
-		}
+	@include desktop{
+		position: absolute;
+	}
 }
