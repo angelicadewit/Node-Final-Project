@@ -91,6 +91,12 @@ select {
 	padding: 3%;
 	color: #555;
 	font: 95% Arial, Helvetica, sans-serif;
+
+	&:focus{
+		box-shadow: 0 0 10px #4F958E;
+		padding: 3%;
+		border: 1px solid #4F958E;
+	}
 }
 
 .letters{
@@ -254,6 +260,20 @@ select {
 			position: relative;
 			width: 93%;
 		}
+	}
+	&.send{
+		background: #dcf1ef;
+		margin: 0px;
+		transition: .2s;
+
+		@include desktop{
+			position: relative;
+			width: 100%;
+		}
+	}
+
+	&:hover{
+		box-shadow: inset 0px 0 5px rgba(0,0,0,.5), inset 0px 0 5px rgba(0,0,0,.5);
 	}
 }
 

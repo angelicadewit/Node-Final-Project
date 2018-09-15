@@ -39,11 +39,13 @@ $submitButton.addEventListener("click", function () {
     });
 });
 
-axios.get("http://localhost:1337/letters").then(function (response) {
-    console.log(response);
-    letterUL.innerHTML = "";
-    newLetterOnPage(response);
-});
+var getLettersOnPage = function getLettersOnPage() {
+    axios.get("http://localhost:1337/letters").then(function (response) {
+        console.log(response);
+        letterUL.innerHTML = "";
+        newLetterOnPage(response);
+    });
+};
 
 var showingReplies = function showingReplies() {
 
@@ -166,10 +168,7 @@ var newLetterOnPage = function newLetterOnPage(letters) {
 };
 
 allFilter.addEventListener("click", function () {
-    axios.get("http://localhost:1337/letters/").then(function (response) {
-        letterUL.innerHTML = "";
-        newLetterOnPage(response);
-    });
+    getLettersOnPage();
 });
 
 var filters = ["work", "love", "family", "school", "misc"];
@@ -184,4 +183,6 @@ filters.forEach(function (filter) {
         });
     });
 });
+
+getLettersOnPage();
 //# sourceMappingURL=main.js.map

@@ -42,13 +42,15 @@ $submitButton.addEventListener(`click`, function() {
 })
 
 
-axios
+let getLettersOnPage = function(){
+    axios
     .get("http://localhost:1337/letters")
     .then(function (response) {
         console.log(response)
         letterUL.innerHTML = ``
         newLetterOnPage(response)
     });
+}
 
 
 
@@ -185,10 +187,7 @@ let newLetterOnPage = function(letters){
 
 
 allFilter.addEventListener("click", function() {
-    axios.get(`http://localhost:1337/letters/`).then(function (response) { 
-    letterUL.innerHTML = ``  
-    newLetterOnPage(response);
-    });
+    getLettersOnPage()
 })
 
 let filters = [
@@ -211,3 +210,5 @@ filters.forEach(function(filter){
     
     })
 })
+
+getLettersOnPage()

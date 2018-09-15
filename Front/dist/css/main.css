@@ -116,6 +116,14 @@ select {
 	font: 95% Arial, Helvetica, sans-serif;
 }
 
+input[name="username"]:focus,
+textarea:focus,
+select:focus {
+	box-shadow: 0 0 10px #4F958E;
+	padding: 3%;
+	border: 1px solid #4F958E;
+}
+
 .letters {
 	padding-top: 30px;
 }
@@ -266,6 +274,23 @@ select {
 		position: relative;
 		width: 93%;
 	}
+}
+
+.label.send {
+	background: #dcf1ef;
+	margin: 0px;
+	transition: .2s;
+}
+
+@media only screen and (min-width: 900px) {
+	.label.send {
+		position: relative;
+		width: 100%;
+	}
+}
+
+.label:hover {
+	box-shadow: inset 0px 0 5px rgba(0, 0, 0, 0.5), inset 0px 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .salutations {
