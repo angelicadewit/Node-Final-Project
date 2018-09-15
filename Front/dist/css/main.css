@@ -102,6 +102,20 @@ h1 {
 	}
 }
 
+input[name="username"],
+textarea,
+select {
+	transition: all 0.30s ease-in-out;
+	outline: none;
+	width: 100%;
+	background: #fff;
+	margin-bottom: 4%;
+	border: 1px solid #ccc;
+	padding: 3%;
+	color: #555;
+	font: 95% Arial, Helvetica, sans-serif;
+}
+
 .letters {
 	padding-top: 30px;
 }
