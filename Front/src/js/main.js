@@ -5,12 +5,7 @@ let labelSelection = document.querySelector(`#label_select`)
 let letterInput = document.querySelector(`[name="letter"]`)
 let letterUL = document.querySelector(`ul.letters`)
 let allFilter = document.querySelector(`.all`)
-let workFilter = document.querySelector(`.work`)
-let loveFilter = document.querySelector(`.love`)
-let familyFilter = document.querySelector(`.family`)
-let schoolFilter = document.querySelector(`.school`)
-let miscFilter = document.querySelector(`.misc`)
-let refreshBtn = document.querySelector(`.refresh`)
+
 // let loveBtn = document.querySelector(`.loveBtn`)
 // let numberOfLoveSpan = document.querySelector(`.loveReactions`)
 
@@ -187,6 +182,8 @@ let newLetterOnPage = function(letters){
     }
 }
 
+
+
 allFilter.addEventListener("click", function() {
     axios.get(`http://localhost:1337/letters/`).then(function (response) { 
     letterUL.innerHTML = ``  
@@ -194,38 +191,23 @@ allFilter.addEventListener("click", function() {
     });
 })
 
-workFilter.addEventListener("click", function() {
-    axios.get(`http://localhost:1337/letters/type/work`).then(function (response) {
-    letterUL.innerHTML = ``    
-    newLetterOnPage(response);
-    });
-})
+let filters = [
+    `work`,
+    `love`,
+    `family`,
+    `school`,
+    `misc`
+]
 
-loveFilter.addEventListener("click", function() {
-    axios.get(`http://localhost:1337/letters/type/love`).then(function (response) {
-    letterUL.innerHTML = ``    
-    newLetterOnPage(response);
-    });
-})
+filters.forEach(function(filter){
+    let filterBtn = document.querySelector(`.label.${filter}`)
 
-familyFilter.addEventListener("click", function() {
-    axios.get(`http://localhost:1337/letters/type/family`).then(function (response) {
-    letterUL.innerHTML = ``    
-    newLetterOnPage(response);
-    });
+    filterBtn.addEventListener("click", function() {
+        axios.get(`http://localhost:1337/letters/type/${filter}`)
+        .then(function (response) {
+            letterUL.innerHTML = ``    
+            newLetterOnPage(response);
+        });
+    
+    })
 })
-
-schoolFilter.addEventListener("click", function() {
-    axios.get(`http://localhost:1337/letters/type/school`).then(function (response) {
-    letterUL.innerHTML = ``    
-    newLetterOnPage(response);
-    });
-})
-
-miscFilter.addEventListener("click", function() {
-    axios.get(`http://localhost:1337/letters/type/misc`).then(function (response) {
-    letterUL.innerHTML = ``    
-    newLetterOnPage(response);
-    });
-})
-

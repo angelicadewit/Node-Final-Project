@@ -7,12 +7,7 @@ var labelSelection = document.querySelector("#label_select");
 var letterInput = document.querySelector("[name=\"letter\"]");
 var letterUL = document.querySelector("ul.letters");
 var allFilter = document.querySelector(".all");
-var workFilter = document.querySelector(".work");
-var loveFilter = document.querySelector(".love");
-var familyFilter = document.querySelector(".family");
-var schoolFilter = document.querySelector(".school");
-var miscFilter = document.querySelector(".misc");
-var refreshBtn = document.querySelector(".refresh");
+
 // let loveBtn = document.querySelector(`.loveBtn`)
 // let numberOfLoveSpan = document.querySelector(`.loveReactions`)
 
@@ -177,38 +172,16 @@ allFilter.addEventListener("click", function () {
     });
 });
 
-workFilter.addEventListener("click", function () {
-    axios.get("http://localhost:1337/letters/type/work").then(function (response) {
-        letterUL.innerHTML = "";
-        newLetterOnPage(response);
-    });
-});
+var filters = ["work", "love", "family", "school", "misc"];
 
-loveFilter.addEventListener("click", function () {
-    axios.get("http://localhost:1337/letters/type/love").then(function (response) {
-        letterUL.innerHTML = "";
-        newLetterOnPage(response);
-    });
-});
+filters.forEach(function (filter) {
+    var filterBtn = document.querySelector(".label." + filter);
 
-familyFilter.addEventListener("click", function () {
-    axios.get("http://localhost:1337/letters/type/family").then(function (response) {
-        letterUL.innerHTML = "";
-        newLetterOnPage(response);
-    });
-});
-
-schoolFilter.addEventListener("click", function () {
-    axios.get("http://localhost:1337/letters/type/school").then(function (response) {
-        letterUL.innerHTML = "";
-        newLetterOnPage(response);
-    });
-});
-
-miscFilter.addEventListener("click", function () {
-    axios.get("http://localhost:1337/letters/type/misc").then(function (response) {
-        letterUL.innerHTML = "";
-        newLetterOnPage(response);
+    filterBtn.addEventListener("click", function () {
+        axios.get("http://localhost:1337/letters/type/" + filter).then(function (response) {
+            letterUL.innerHTML = "";
+            newLetterOnPage(response);
+        });
     });
 });
 //# sourceMappingURL=main.js.map
