@@ -90,8 +90,26 @@ body {
 	}
 }
 
-h1 {
-	font-size: 3em;
+h1 a {
+	background: url(../img/logo.png) no-repeat;
+	background-size: cover;
+	text-indent: -9999px;
+	float: left;
+	overflow: hidden;
+	width: 200px;
+	height: 200px;
+	left: 50%;
+	margin-left: -100px;
+	margin-bottom: 20px;
+	position: relative;
+}
+
+@media only screen and (min-width: 740px) {
+	h1 a {
+		margin-left: -150px;
+		width: 300px;
+		height: 300px;
+	}
 }
 
 @media only screen and (min-width: 900px) {
@@ -204,6 +222,7 @@ select:focus {
 }
 
 .label-cluster {
+	clear: both;
 	display: flex;
 	margin: 20px 0px;
 	flex-wrap: wrap;
@@ -218,6 +237,7 @@ select:focus {
 	padding: 10px 20px;
 	cursor: pointer;
 	align-self: flex-end;
+	transition: .5s;
 }
 
 @media only screen and (min-width: 900px) {
@@ -279,7 +299,6 @@ select:focus {
 .label.send {
 	background: #dcf1ef;
 	margin: 0px;
-	transition: .2s;
 }
 
 @media only screen and (min-width: 900px) {
