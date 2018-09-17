@@ -9,8 +9,8 @@ let allFilter = document.querySelector(`.all`)
 // let loveBtn = document.querySelector(`.loveBtn`)
 // let numberOfLoveSpan = document.querySelector(`.loveReactions`)
 
-let localURL = `http://localhost:1337/letters`
-let liveURL = `http://206.189.78.79:1337`
+let localURL = `http://localhost:1337`
+let liveURL = `206.189.78.79:1337/letters/`
 
 
 
@@ -28,7 +28,7 @@ $submitButton.addEventListener(`click`, function() {
         labelSelection.value = `misc`
     }
 
-	axios.post(localURL, {
+	axios.post(liveURL, {
         username: newUsername,
         label: labelSelection.value,
         message: letterInput.value,
@@ -44,7 +44,7 @@ $submitButton.addEventListener(`click`, function() {
 
 let getLettersOnPage = function(){
     axios
-    .get("http://localhost:1337/letters")
+    .get("https://206.189.78.79:1337/letters")
     .then(function (response) {
         console.log(response)
         letterUL.innerHTML = ``
@@ -54,21 +54,21 @@ let getLettersOnPage = function(){
 
 
 
-let showingReplies = function(){
+// let showingReplies = function(){
 
-    let repliesDiv = document.querySelectorAll(`.replies`)
+//     let repliesDiv = document.querySelectorAll(`.replies`)
     
-    repliesDiv.forEach(function(reply){
-        let serverReplyDiv = document.createElement('div')
+//     repliesDiv.forEach(function(reply){
+//         let serverReplyDiv = document.createElement('div')
 
-        serverReplyDiv.classList.add(`reply`)
+//         serverReplyDiv.classList.add(`reply`)
         
-        serverReplyDiv.style.left = reply.getBoundingClientRect().right + window.scrollX + "px";
-        serverReplyDiv.style.top = reply.getBoundingClientRect().top + window.scrollY + "px";
-        reply.appendChild(serverReplyDiv)
-    })
+//         serverReplyDiv.style.left = reply.getBoundingClientRect().right + window.scrollX + "px";
+//         serverReplyDiv.style.top = reply.getBoundingClientRect().top + window.scrollY + "px";
+//         reply.appendChild(serverReplyDiv)
+//     })
 		
-}
+// }
 
 
 
@@ -120,7 +120,7 @@ let newLetterOnPage = function(letters){
 
 
             loveBtn.addEventListener("click", function() {
-                axios.post(localURL + "/" + letter.id + "/love")
+                axios.post(liveURL + "/" + letter.id + "/love")
                     .then((response) => {
                         // addingAReaction(response)
                         numberOfLoveSpan.textContent = ``
@@ -129,7 +129,7 @@ let newLetterOnPage = function(letters){
             })
 
             surpriseBtn.addEventListener("click", function() {
-                axios.post(localURL + "/" + letter.id + "/surprise")
+                axios.post(liveURL + "/" + letter.id + "/surprise")
                     .then((response) => {
                         numberOfSurpriseSpan.textContent = ``
                         numberOfSurpriseSpan.textContent = response.data
@@ -137,7 +137,7 @@ let newLetterOnPage = function(letters){
             })
 
             sadBtn.addEventListener("click", function() {
-                axios.post(localURL + "/" + letter.id + "/sad")
+                axios.post(liveURL + "/" + letter.id + "/sad")
                     .then((response) => {
                         numberOfSadSpan.textContent = ``
                         numberOfSadSpan.textContent = response.data
@@ -146,7 +146,7 @@ let newLetterOnPage = function(letters){
             
             letterLabelDiv.classList.add ("label", letter.label)
             letterLabelDiv.addEventListener("click", function() {
-                axios.get(`http://localhost:1337/letters/type/${letter.label}`).then(function (response) {
+                axios.get(`https://206.189.78.79:1337/letters/type/${letter.label}`).then(function (response) {
                     // letterUL.innerHTML = ``
                     newLetterOnPage(response);
                 });
@@ -202,7 +202,7 @@ filters.forEach(function(filter){
     let filterBtn = document.querySelector(`.label.${filter}`)
 
     filterBtn.addEventListener("click", function() {
-        axios.get(`http://localhost:1337/letters/type/${filter}`)
+        axios.get(`https://206.189.78.79:1337/letters/type/${filter}`)
         .then(function (response) {
             letterUL.innerHTML = ``    
             newLetterOnPage(response);

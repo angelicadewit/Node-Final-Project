@@ -11,8 +11,8 @@ var allFilter = document.querySelector(".all");
 // let loveBtn = document.querySelector(`.loveBtn`)
 // let numberOfLoveSpan = document.querySelector(`.loveReactions`)
 
-var localURL = "http://localhost:1337/letters";
-var liveURL = "http://206.189.78.79:1337";
+var localURL = "http://localhost:1337";
+var liveURL = "206.189.78.79:1337/letters/";
 
 $submitButton.addEventListener("click", function () {
     var enteredUsername = usernameInput.value;
@@ -28,7 +28,7 @@ $submitButton.addEventListener("click", function () {
         labelSelection.value = "misc";
     }
 
-    axios.post(localURL, {
+    axios.post(liveURL, {
         username: newUsername,
         label: labelSelection.value,
         message: letterInput.value
@@ -40,27 +40,29 @@ $submitButton.addEventListener("click", function () {
 });
 
 var getLettersOnPage = function getLettersOnPage() {
-    axios.get("http://localhost:1337/letters").then(function (response) {
+    axios.get("https://206.189.78.79:1337/letters").then(function (response) {
         console.log(response);
         letterUL.innerHTML = "";
         newLetterOnPage(response);
     });
 };
 
-var showingReplies = function showingReplies() {
+// let showingReplies = function(){
 
-    var repliesDiv = document.querySelectorAll(".replies");
+//     let repliesDiv = document.querySelectorAll(`.replies`)
 
-    repliesDiv.forEach(function (reply) {
-        var serverReplyDiv = document.createElement('div');
+//     repliesDiv.forEach(function(reply){
+//         let serverReplyDiv = document.createElement('div')
 
-        serverReplyDiv.classList.add("reply");
+//         serverReplyDiv.classList.add(`reply`)
 
-        serverReplyDiv.style.left = reply.getBoundingClientRect().right + window.scrollX + "px";
-        serverReplyDiv.style.top = reply.getBoundingClientRect().top + window.scrollY + "px";
-        reply.appendChild(serverReplyDiv);
-    });
-};
+//         serverReplyDiv.style.left = reply.getBoundingClientRect().right + window.scrollX + "px";
+//         serverReplyDiv.style.top = reply.getBoundingClientRect().top + window.scrollY + "px";
+//         reply.appendChild(serverReplyDiv)
+//     })
+
+// }
+
 
 var newLetterOnPage = function newLetterOnPage(letters) {
     if (letters.data.length === 0) {
@@ -108,7 +110,7 @@ var newLetterOnPage = function newLetterOnPage(letters) {
             newLetterDiv.classList.add("letter");
 
             loveBtn.addEventListener("click", function () {
-                axios.post(localURL + "/" + letter.id + "/love").then(function (response) {
+                axios.post(liveURL + "/" + letter.id + "/love").then(function (response) {
                     // addingAReaction(response)
                     numberOfLoveSpan.textContent = "";
                     numberOfLoveSpan.textContent = response.data;
@@ -116,14 +118,14 @@ var newLetterOnPage = function newLetterOnPage(letters) {
             });
 
             surpriseBtn.addEventListener("click", function () {
-                axios.post(localURL + "/" + letter.id + "/surprise").then(function (response) {
+                axios.post(liveURL + "/" + letter.id + "/surprise").then(function (response) {
                     numberOfSurpriseSpan.textContent = "";
                     numberOfSurpriseSpan.textContent = response.data;
                 });
             });
 
             sadBtn.addEventListener("click", function () {
-                axios.post(localURL + "/" + letter.id + "/sad").then(function (response) {
+                axios.post(liveURL + "/" + letter.id + "/sad").then(function (response) {
                     numberOfSadSpan.textContent = "";
                     numberOfSadSpan.textContent = response.data;
                 });
@@ -131,7 +133,7 @@ var newLetterOnPage = function newLetterOnPage(letters) {
 
             letterLabelDiv.classList.add("label", letter.label);
             letterLabelDiv.addEventListener("click", function () {
-                axios.get("http://localhost:1337/letters/type/" + letter.label).then(function (response) {
+                axios.get("https://206.189.78.79:1337/letters/type/" + letter.label).then(function (response) {
                     // letterUL.innerHTML = ``
                     newLetterOnPage(response);
                 });
@@ -177,7 +179,7 @@ filters.forEach(function (filter) {
     var filterBtn = document.querySelector(".label." + filter);
 
     filterBtn.addEventListener("click", function () {
-        axios.get("http://localhost:1337/letters/type/" + filter).then(function (response) {
+        axios.get("https://206.189.78.79:1337/letters/type/" + filter).then(function (response) {
             letterUL.innerHTML = "";
             newLetterOnPage(response);
         });

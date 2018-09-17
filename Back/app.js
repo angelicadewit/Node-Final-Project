@@ -9,6 +9,11 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
+var corsOptions = {
+    origin: 'http://angelicadewit.com/node',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
 
 let letters = []
 let idCounter = 0
