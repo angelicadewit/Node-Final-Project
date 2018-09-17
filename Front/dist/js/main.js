@@ -11,10 +11,11 @@ var allFilter = document.querySelector(".all");
 // let loveBtn = document.querySelector(`.loveBtn`)
 // let numberOfLoveSpan = document.querySelector(`.loveReactions`)
 
-var localURL = "http://localhost:1337";
-var liveURL = "http://206.189.78.79:1337/letters/";
+var localURL = "http://localhost:1337/";
+var liveURL = "http://206.189.78.79:1337/";
 
 $submitButton.addEventListener("click", function () {
+    // event.preventDefault();
     var enteredUsername = usernameInput.value;
     var newUsername = "";
 
@@ -28,7 +29,7 @@ $submitButton.addEventListener("click", function () {
         labelSelection.value = "misc";
     }
 
-    axios.post(liveURL, {
+    axios.post(liveURL + "letters", {
         username: newUsername,
         label: labelSelection.value,
         message: letterInput.value
@@ -40,7 +41,7 @@ $submitButton.addEventListener("click", function () {
 });
 
 var getLettersOnPage = function getLettersOnPage() {
-    axios.get("http://206.189.78.79:1337/letters").then(function (response) {
+    axios.get(liveURL + "letters").then(function (response) {
         console.log(response);
         letterUL.innerHTML = "";
         newLetterOnPage(response);
@@ -133,7 +134,7 @@ var newLetterOnPage = function newLetterOnPage(letters) {
 
             letterLabelDiv.classList.add("label", letter.label);
             letterLabelDiv.addEventListener("click", function () {
-                axios.get("http://206.189.78.79:1337/letters/type/" + letter.label).then(function (response) {
+                axios.get(liveURL + ("letters/type/" + letter.label)).then(function (response) {
                     // letterUL.innerHTML = ``
                     newLetterOnPage(response);
                 });
@@ -179,7 +180,7 @@ filters.forEach(function (filter) {
     var filterBtn = document.querySelector(".label." + filter);
 
     filterBtn.addEventListener("click", function () {
-        axios.get("http://206.189.78.79:1337/letters/type/" + filter).then(function (response) {
+        axios.get(liveURL + ("letters/type/" + filter)).then(function (response) {
             letterUL.innerHTML = "";
             newLetterOnPage(response);
         });

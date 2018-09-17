@@ -9,12 +9,13 @@ let allFilter = document.querySelector(`.all`)
 // let loveBtn = document.querySelector(`.loveBtn`)
 // let numberOfLoveSpan = document.querySelector(`.loveReactions`)
 
-let localURL = `http://localhost:1337`
-let liveURL = `http://206.189.78.79:1337/letters/`
+let localURL = `http://localhost:1337/`
+let liveURL = `http://206.189.78.79:1337/`
 
 
 
 $submitButton.addEventListener(`click`, function() {
+    // event.preventDefault();
     let enteredUsername = usernameInput.value
     let newUsername = ``
 
@@ -28,7 +29,7 @@ $submitButton.addEventListener(`click`, function() {
         labelSelection.value = `misc`
     }
 
-	axios.post(liveURL, {
+	axios.post(liveURL+"letters", {
         username: newUsername,
         label: labelSelection.value,
         message: letterInput.value,
@@ -44,7 +45,7 @@ $submitButton.addEventListener(`click`, function() {
 
 let getLettersOnPage = function(){
     axios
-    .get("http://206.189.78.79:1337/letters")
+    .get(liveURL+"letters")
     .then(function (response) {
         console.log(response)
         letterUL.innerHTML = ``
@@ -146,7 +147,7 @@ let newLetterOnPage = function(letters){
             
             letterLabelDiv.classList.add ("label", letter.label)
             letterLabelDiv.addEventListener("click", function() {
-                axios.get(`http://206.189.78.79:1337/letters/type/${letter.label}`).then(function (response) {
+                axios.get(liveURL+`letters/type/${letter.label}`).then(function (response) {
                     // letterUL.innerHTML = ``
                     newLetterOnPage(response);
                 });
@@ -202,7 +203,7 @@ filters.forEach(function(filter){
     let filterBtn = document.querySelector(`.label.${filter}`)
 
     filterBtn.addEventListener("click", function() {
-        axios.get(`http://206.189.78.79:1337/letters/type/${filter}`)
+        axios.get(liveURL+`letters/type/${filter}`)
         .then(function (response) {
             letterUL.innerHTML = ``    
             newLetterOnPage(response);
