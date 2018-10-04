@@ -104,7 +104,7 @@ h1 a {
 	position: relative;
 }
 
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1200px) {
 	.message-inputs {
 		position: fixed;
 		top: 3em;
@@ -145,7 +145,7 @@ select:focus {
 	}
 }
 
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1200px) {
 	.letters {
 		column-count: 2;
 		width: 75%;
@@ -153,7 +153,7 @@ select:focus {
 	}
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1440px) {
 	.letters {
 		column-count: 3;
 	}
@@ -193,7 +193,7 @@ select:focus {
 	background: #f1d8f1;
 }
 
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1200px) {
 	.letters li {
 		max-width: 768px;
 		column-gap: 1.5em;
@@ -207,7 +207,7 @@ select:focus {
 	}
 }
 
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1200px) {
 	.letters li p {
 		width: 70%;
 	}
@@ -232,7 +232,7 @@ select:focus {
 	transition: .5s;
 }
 
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1200px) {
 	.label {
 		width: fit-content;
 		padding: 5px;
@@ -244,7 +244,7 @@ select:focus {
 	margin: 5px;
 }
 
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1200px) {
 	.label.side {
 		position: relative;
 		width: 45%;
@@ -281,7 +281,7 @@ select:focus {
 	background: #dcf1ef;
 }
 
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1200px) {
 	.label.refresh {
 		position: relative;
 		width: 93%;
@@ -293,7 +293,7 @@ select:focus {
 	margin: 0px;
 }
 
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1200px) {
 	.label.send {
 		position: relative;
 		width: 100%;
@@ -320,7 +320,7 @@ select:focus {
 	align-content: flex-end;
 }
 
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1200px) {
 	.reaction {
 		display: inline-block;
 		margin: 15px 25px;
@@ -348,7 +348,7 @@ select:focus {
 	}
 }
 
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1200px) {
 	.reactionBtn {
 		position: absolute;
 	}

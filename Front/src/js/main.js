@@ -15,7 +15,7 @@ let liveURL = `http://206.189.78.79:1337/`
 
 
 $submitButton.addEventListener(`click`, function() {
-    // event.preventDefault();
+    event.preventDefault();
     let enteredUsername = usernameInput.value
     let newUsername = ``
 
@@ -36,6 +36,7 @@ $submitButton.addEventListener(`click`, function() {
 	})
     .then(function (response) {
         console.log(response)
+        newLetterOnPage(response)
     })
     .catch(function (error) {
         console.log(error)
@@ -43,16 +44,13 @@ $submitButton.addEventListener(`click`, function() {
 })
 
 
-let getLettersOnPage = function(){
-    axios
-    .get(liveURL+"letters")
+axios
+    .get(liveURL + "letters")
     .then(function (response) {
         console.log(response)
         letterUL.innerHTML = ``
         newLetterOnPage(response)
     });
-}
-
 
 
 // let showingReplies = function(){
@@ -121,25 +119,28 @@ let newLetterOnPage = function(letters){
 
 
             loveBtn.addEventListener("click", function() {
-                axios.post(liveURL + "/" + letter.id + "/love")
+                axios.post(liveURL + "letters/" + letter.id + "/love")
                     .then((response) => {
                         // addingAReaction(response)
+                        event.preventDefault();
                         numberOfLoveSpan.textContent = ``
                         numberOfLoveSpan.textContent = response.data
                     })
             })
 
             surpriseBtn.addEventListener("click", function() {
-                axios.post(liveURL + "/" + letter.id + "/surprise")
+                axios.post(liveURL + "letters/" + letter.id + "/surprise")
                     .then((response) => {
+                        event.preventDefault();
                         numberOfSurpriseSpan.textContent = ``
                         numberOfSurpriseSpan.textContent = response.data
                     })
             })
 
             sadBtn.addEventListener("click", function() {
-                axios.post(liveURL + "/" + letter.id + "/sad")
+                axios.post(liveURL + "letters/" + letter.id + "/sad")
                     .then((response) => {
+                        event.preventDefault();
                         numberOfSadSpan.textContent = ``
                         numberOfSadSpan.textContent = response.data
                     })
@@ -188,7 +189,12 @@ let newLetterOnPage = function(letters){
 
 
 allFilter.addEventListener("click", function() {
-    getLettersOnPage()
+    axios.get(liveURL + "letters")
+    .then(function (response) {
+        console.log(response)
+        letterUL.innerHTML = ``
+        newLetterOnPage(response)
+    });
 })
 
 let filters = [
@@ -212,4 +218,3 @@ filters.forEach(function(filter){
     })
 })
 
-getLettersOnPage()

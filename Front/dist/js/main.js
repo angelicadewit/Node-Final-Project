@@ -15,7 +15,7 @@ var localURL = "http://localhost:1337/";
 var liveURL = "http://206.189.78.79:1337/";
 
 $submitButton.addEventListener("click", function () {
-    // event.preventDefault();
+    event.preventDefault();
     var enteredUsername = usernameInput.value;
     var newUsername = "";
 
@@ -35,18 +35,17 @@ $submitButton.addEventListener("click", function () {
         message: letterInput.value
     }).then(function (response) {
         console.log(response);
+        newLetterOnPage(response);
     }).catch(function (error) {
         console.log(error);
     });
 });
 
-var getLettersOnPage = function getLettersOnPage() {
-    axios.get(liveURL + "letters").then(function (response) {
-        console.log(response);
-        letterUL.innerHTML = "";
-        newLetterOnPage(response);
-    });
-};
+axios.get(liveURL + "letters").then(function (response) {
+    console.log(response);
+    letterUL.innerHTML = "";
+    newLetterOnPage(response);
+});
 
 // let showingReplies = function(){
 
@@ -111,22 +110,25 @@ var newLetterOnPage = function newLetterOnPage(letters) {
             newLetterDiv.classList.add("letter");
 
             loveBtn.addEventListener("click", function () {
-                axios.post(liveURL + "/" + letter.id + "/love").then(function (response) {
+                axios.post(liveURL + "letters/" + letter.id + "/love").then(function (response) {
                     // addingAReaction(response)
+                    event.preventDefault();
                     numberOfLoveSpan.textContent = "";
                     numberOfLoveSpan.textContent = response.data;
                 });
             });
 
             surpriseBtn.addEventListener("click", function () {
-                axios.post(liveURL + "/" + letter.id + "/surprise").then(function (response) {
+                axios.post(liveURL + "letters/" + letter.id + "/surprise").then(function (response) {
+                    event.preventDefault();
                     numberOfSurpriseSpan.textContent = "";
                     numberOfSurpriseSpan.textContent = response.data;
                 });
             });
 
             sadBtn.addEventListener("click", function () {
-                axios.post(liveURL + "/" + letter.id + "/sad").then(function (response) {
+                axios.post(liveURL + "letters/" + letter.id + "/sad").then(function (response) {
+                    event.preventDefault();
                     numberOfSadSpan.textContent = "";
                     numberOfSadSpan.textContent = response.data;
                 });
@@ -171,7 +173,11 @@ var newLetterOnPage = function newLetterOnPage(letters) {
 };
 
 allFilter.addEventListener("click", function () {
-    getLettersOnPage();
+    axios.get(liveURL + "letters").then(function (response) {
+        console.log(response);
+        letterUL.innerHTML = "";
+        newLetterOnPage(response);
+    });
 });
 
 var filters = ["work", "love", "family", "school", "misc"];
@@ -186,6 +192,4 @@ filters.forEach(function (filter) {
         });
     });
 });
-
-getLettersOnPage();
 //# sourceMappingURL=main.js.map

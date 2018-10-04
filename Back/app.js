@@ -64,6 +64,7 @@ app.post('/letters', function(req, res){
         
     }
 
+console.log(newLetter);
     letters.unshift(newLetter)
 
     res.send(letters)
@@ -137,6 +138,7 @@ app.post(`/letters/:id/surprise`, function(req, res){
 })
 
 app.get(`/letters`, function(req, res){
+console.log("get all letters", letters);
     res.send(letters)
 })
 
