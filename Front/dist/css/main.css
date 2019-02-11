@@ -68,6 +68,16 @@ table {
 	border-spacing: 0;
 }
 
+@keyframes ani-fadein {
+	0% {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
 /* 1. Main Layout ================================= */
 * {
 	box-sizing: border-box;
@@ -171,6 +181,7 @@ select:focus {
 	width: 100%;
 	vertical-align: top;
 	border: 2px solid black;
+	animation: ani-fadein .5s;
 }
 
 .letters li.work {
@@ -213,8 +224,11 @@ select:focus {
 	}
 }
 
-.label-cluster {
+.instructions {
 	clear: both;
+}
+
+.label-cluster {
 	display: flex;
 	margin: 20px 0px;
 	flex-wrap: wrap;
@@ -301,7 +315,7 @@ select:focus {
 }
 
 .label:hover {
-	box-shadow: inset 0px 0 5px rgba(0, 0, 0, 0.5), inset 0px 0 5px rgba(0, 0, 0, 0.5);
+	box-shadow: inset 3px 3px 0px 0px rgba(0, 0, 0, 0.75), inset -3px -3px 0px 0px rgba(0, 0, 0, 0.75);
 }
 
 .salutations {
@@ -336,23 +350,27 @@ select:focus {
 	}
 }
 
-.reactionBtn {
+.reaction-btns {
 	margin-left: auto;
 	cursor: pointer;
 }
 
 @media only screen and (min-width: 740px) {
-	.reactionBtn {
+	.reaction-btns {
 		display: inline;
 		bottom: 0;
 	}
 }
 
 @media only screen and (min-width: 1200px) {
-	.reactionBtn {
+	.reaction-btns {
 		position: absolute;
 		width: 50px;
 	}
+}
+
+.reaction-button:active {
+	transform: translateY(-4px);
 }
 
 /*# sourceMappingURL=main.css.map */

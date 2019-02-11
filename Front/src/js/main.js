@@ -87,12 +87,15 @@ let newLetterOnPage = function(letters){
             let reactionsBtnDiv = document.createElement(`div`)
 
             let numberOfLoveSpan = document.createElement(`span`)
+            let loveBtnDiv = document.createElement(`div`)
             let loveBtn = document.createElement(`img`)
 
             let numberOfSurpriseSpan = document.createElement(`span`)
+            let surpriseBtnDiv = document.createElement(`div`)
             let surpriseBtn = document.createElement(`img`)
 
             let numberOfSadSpan = document.createElement(`span`)
+            let sadBtnDiv = document.createElement(`div`)
             let sadBtn = document.createElement(`img`)
 
             // let repliesDiv = document.createElement(`div`)
@@ -103,17 +106,20 @@ let newLetterOnPage = function(letters){
             numberOfLoveSpan.textContent = letter.love
             numberOfLoveSpan.classList.add(`loveReactions`)
             loveBtn.src = "dist/img/56-3.png"
+            loveBtnDiv.classList.add(`reaction-button`)
 
             numberOfSurpriseSpan.textContent = letter.surprise
             surpriseBtn.src = "dist/img/56-1.png"
+            surpriseBtnDiv.classList.add(`reaction-button`)
             numberOfSurpriseSpan.classList.add(`surpriseReactions`)
 
             numberOfSadSpan.textContent = letter.sad
             sadBtn.src = "dist/img/56-2.png"
+            sadBtnDiv.classList.add(`reaction-button`)
             numberOfSadSpan.classList.add(`sadReactions`)
             
 
-            reactionsBtnDiv.classList.add(`reactionBtn`)
+            reactionsBtnDiv.classList.add(`reaction-btns`)
             reactionsDiv.classList.add(`reaction`)
             newLetterDiv.classList.add(`letter`)
 
@@ -165,15 +171,19 @@ let newLetterOnPage = function(letters){
             newLetterDiv.innerHTML = `<p>${letter.message}.</p> <p class="salutations">Love, ${letter.username}</p>`
 
             reactionsDiv.appendChild(letterLabelDiv)
-            
-            reactionsBtnDiv.appendChild(numberOfLoveSpan)
-            reactionsBtnDiv.appendChild(loveBtn)
 
-            reactionsBtnDiv.appendChild(numberOfSurpriseSpan)
-            reactionsBtnDiv.appendChild(surpriseBtn)
+            loveBtnDiv.appendChild(numberOfLoveSpan)
+            loveBtnDiv.appendChild(loveBtn)
 
-            reactionsBtnDiv.appendChild(numberOfSadSpan)
-            reactionsBtnDiv.appendChild(sadBtn)
+            surpriseBtnDiv.appendChild(numberOfSurpriseSpan)
+            surpriseBtnDiv.appendChild(surpriseBtn)
+
+            sadBtnDiv.appendChild(numberOfSadSpan)
+            sadBtnDiv.appendChild(sadBtn)
+
+            reactionsBtnDiv.appendChild(loveBtnDiv)
+            reactionsBtnDiv.appendChild(surpriseBtnDiv)
+            reactionsBtnDiv.appendChild(sadBtnDiv)
 
             reactionsDiv.appendChild(reactionsBtnDiv)
     

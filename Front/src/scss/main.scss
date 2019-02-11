@@ -40,6 +40,16 @@ $bigger-desktop-breakpoint: 1440px;
 	}
 }
 
+@keyframes ani-fadein {
+	0% {
+		opacity: 0;
+		transform: translateY(10px)
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
 
 /* 1. Main Layout ================================= */
 
@@ -51,7 +61,6 @@ body {
 	background: #b1dad5;
 	font-family: sans-serif;
 	transition: .2s;
-	
 }
 
 
@@ -149,6 +158,7 @@ select {
 	width: 100%;
 	vertical-align: top;
 	border: 2px solid black;
+	animation: ani-fadein .5s;
 	
 	&.work{
 		background: #c8ebdb;
@@ -192,6 +202,7 @@ select {
 	}
 }
 
+
 // .letterDiv{
 // 	font-size: 1.25em;
 // 	background: #ddd;
@@ -211,8 +222,11 @@ select {
 // 	}
 // }
 
-.label-cluster{
+.instructions{
 	clear: both;
+}
+
+.label-cluster{
 	display: flex;
 	margin: 20px 0px;
 	flex-wrap: wrap;
@@ -229,6 +243,7 @@ select {
 	cursor: pointer;
 	align-self: flex-end;
 	transition: .5s;
+	
 
 
 	@include desktop{
@@ -291,9 +306,11 @@ select {
 	}
 
 	&:hover{
-		box-shadow: inset 0px 0 5px rgba(0,0,0,.5), inset 0px 0 5px rgba(0,0,0,.5);
+		box-shadow: inset 3px 3px 0px 0px rgba(0,0,0,0.75), inset -3px -3px 0px 0px rgba(0,0,0,0.75);	
 	}
 }
+
+
 
 
 .salutations{
@@ -326,7 +343,7 @@ select {
 	}
 }
 
-.reactionBtn{
+.reaction-btns{
 	margin-left: auto;
 	cursor: pointer;
 
@@ -340,3 +357,11 @@ select {
 		width: 50px;
 	}
 }
+
+.reaction-button{
+
+	&:active{
+		transform: translateY(-4px);
+	}
+}
+
